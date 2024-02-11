@@ -1,4 +1,3 @@
-% !TEX root = C:\Users\davys\Downloads\modelo-latex-main\tese.tex
 % Arquivo LaTeX de exemplo de dissertação/tese a ser apresentada à CPG do IME-USP
 %
 % Criação: Jesús P. Mena-Chalco
@@ -28,8 +27,8 @@
 % preciso fornecer o resumo nessas duas línguas. LaTeX aceita alguns nomes
 % diferentes para a língua portuguesa; dentre as opções, prefira sempre
 % "brazilian" para português brasileiro e "portuguese" para português europeu.
-%\documentclass[a4paper,12pt,twoside,brazilian,english]{book}
-\documentclass[a4paper,12pt,twoside,english,brazilian]{book}
+\documentclass[a4paper,12pt,twoside,brazilian,english]{book}
+% \documentclass[a4paper,12pt,twoside,english,brazilian]{book}
 
 % O preâmbulo de um documento LaTeX pode ser razoavelmente longo. Neste
 % modelo, optamos por reduzi-lo, colocando praticamente tudo do preâmbulo
@@ -95,25 +94,27 @@
 \title{Título do trabalho}[um subtítulo]
 \translatedtitle{Title of the document}[a subtitle]
 
-\author[fem]{Nome Completo}
+\author[masc]{Davy Alves de Souza}
 
 \def\profa{Prof\kern.02em.\kern-.07emª\kern.07em}
 \def\dra{Dr\kern-.04em.\kern-.11emª\kern.07em}
 
 % Para TCCs, este comando define o supervisor
-\orientador[fem]{\profa{} \dra{} Fulana de Tal}
+% \orientador[fem]{\profa{} \dra{} Renata Wassermann}
+\orientador[fem]{Prof. Dr. Renata Wassermann}
+% \orientador[fem]{Prof. Renata Wassermann, PhD}
 
 % Se não houver, remova; se houver mais de um, basta
 % repetir o comando quantas vezes forem necessárias
-\coorientador{Prof. Dr. Ciclano de Tal}
-\coorientador[fem]{\profa{} \dra{} Beltrana de Tal}
+% \coorientador{Prof. Dr. Ciclano de Tal}
+% \coorientador[fem]{\profa{} \dra{} Beltrana de Tal}
 
 \banca{
-  \profa{} \dra{} Fulana de Tal (orientadora) -- IME-USP [sem ponto final],
+  % \profa{} \dra{} Renata Wassermann (orientadora) -- IME-USP [sem ponto final],
   % Em inglês, não há o "ª"
-  %Prof. Dr. Fulana de Tal (advisor) -- IME-USP [sem ponto final],
-  Prof. Dr. Ciclano de Tal -- IME-USP [sem ponto final],
-  \profa{} \dra{} Convidada de Tal -- IMPA [sem ponto final],
+  Prof. Dr. Renata Wassermann (advisor) -- IME-USP [sem ponto final],
+  % Prof. Dr. Ciclano de Tal -- IME-USP [sem ponto final],
+  % \profa{} \dra{} Convidada de Tal -- IMPA [sem ponto final],
 }
 
 % A página de rosto da versão para depósito (ou seja, a versão final
@@ -126,12 +127,13 @@
   %tcc,
   %definitiva, % É a versão para defesa ou a versão definitiva?
   %quali, % É qualificação?
-  programa={Ciência da Computação},
+  % programa={Ciência da Computação},
+  programa={Computer Science},
 }
 
 \defesa{
   local={São Paulo},
-  data=2017-08-10, % YYYY-MM-DD
+  data=2024-05-10, % YYYY-MM-DD
 }
 
 % Se não houve bolsa, remova
@@ -156,8 +158,8 @@
 %
 %\apoio{During the development if this work, the author received\\
 %      financial support from FAPESP -- grant \#aaaa/nnnnn-d}
-\apoio{Durante o desenvolvimento deste trabalho o autor
-       recebeu auxílio financeiro da XXXX}
+% \apoio{Durante o desenvolvimento deste trabalho o autor
+%        recebeu auxílio financeiro da XXXX}
 
 % A licença do seu trabalho. Use CC-BY, CC-BY-NC, CC-BY-ND, CC-BY-SA,
 % CC-BY-NC-SA ou CC-BY-NC-ND para escolher a licença Creative Commons
