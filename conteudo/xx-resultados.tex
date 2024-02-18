@@ -1,0 +1,110 @@
+%!TeX root=../tese.tex
+%("dica" para o editor de texto: este arquivo é parte de um documento maior)
+% para saber mais: https://tex.stackexchange.com/q/78101
+
+\chapter{Evaluation}
+\label{chap:evaluation}
+
+To find out whether the TBox saturation process introduced produces a viable result, we compared the results obtained by applying the optimal repair approach from \citep{Baader-CADE2021} with the results from the partial meet contraction operation from \citep{Matos2021} after a TBox saturation.
+
+\section{Scenario \#1: Empty TBox and non-empty ABox}
+\label{sec:scenario-1}
+
+Given an empty TBox $\mathcal{T}$, the ABox $\mathcal{A}$,
+
+\begin{equation*}
+    \begin{aligned}
+        \mathcal{A} = \{ & Politician(Albert),  \\
+                         & Businessman(Albert), \\
+                         & Politician(Bob),     \\
+                         & Businessman(Bob),    \\
+                         & related(Albert, Bob) \}
+    \end{aligned}
+\end{equation*}
+
+and the repair request $\mathcal{R}$,
+
+$$\mathcal{R} = {\exists related.(Politician \sqcap Businessman)(Albert)}$$
+
+the optimal repair computed is the qABox denoted by
+
+\begin{equation*}
+    \begin{aligned}
+        \exists X.\mathcal{A} = \exists \{ x, y \}.\{ & Politician(Albert),  \\
+                                                      & Businessman(Albert), \\
+                                                      & Politician(Bob),     \\
+                                                      & Businessman(Bob),    \\ 
+                                                      & Politician(x),       \\
+                                                      & Businessman(y),      \\
+                                                      & related(Albert, x)   \\
+                                                      & related(Albert, y)   \}
+    \end{aligned}
+\end{equation*}
+
+Now, to compute the partial meet contraction operation, we first need to saturate the TBox w.r.t. the ABox $\mathcal{A}$, which will result at the following TBox:
+
+\begin{equation*}
+    \begin{aligned}
+        sat^{\mathcal{A}}(\mathcal{T}) = \{ \exists related.Politician, \exists related.Businessman \}
+    \end{aligned}
+\end{equation*}
+
+Finally, applying the partial meet contraction at the saturated ontology results
+
+\begin{equation*}
+    \begin{aligned}
+        \mathcal{A} = \{ & Politician(Albert),  \\
+                         & Businessman(Albert), \\
+                         & Businessman(Bob),    \\
+                         & related(Albert, Bob) \}
+    \end{aligned}
+\end{equation*}
+
+\begin{equation*}
+    \begin{aligned}
+        \mathcal{T} = \{ \exists related.Politician, \exists related.Businessman \}
+    \end{aligned}
+\end{equation*}
+
+\section{Scenario \#2: Non-empty TBox and ABox}
+\label{sec:scenario-2}
+
+\section{Scenario \#3: ---}
+\label{sec:scenario-3}
+
+\section{Scenario \#4: ---}
+\label{sec:scenario-4}
+
+% \begin{table}[]
+%     \setlength{\extrarowheight}{7pt}
+%     \begin{tabular}{ll}
+%         \hline
+%         \multicolumn{2}{l}{\textbf{Example 01}: Politicians and businessman ontology}          \\ 
+%         \hline
+%         \texttt{1}. & \texttt{Politician(Albert)}  \\ 
+%         \texttt{2}. & \texttt{Businessman(Albert)} \\
+%         \texttt{3}. & \texttt{Politician(Bob)}  \\ 
+%         \texttt{4}. & \texttt{Businessman(Bob)} \\
+%         \texttt{5}. & \texttt{related(Albert, Bob)} \\
+%         \hline
+%     \end{tabular}
+% \end{table}
+
+% P(a)
+% B(a)
+
+% P(b)
+% B(b)
+
+% F(c)
+
+% r(a,b)
+% r(b,c)
+
+% exists r.P
+% exists r.B
+% exists r.F
+
+% exists r.(exists r.F)(a)
+
+% a -r-> P(b) -t-> F(c)

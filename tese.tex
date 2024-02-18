@@ -344,9 +344,16 @@ texto texto texto texto. Texto opcional.
 
 % A introdução não tem número de capítulo, então os cabeçalhos também não
 \pagestyle{unnumberedchapter}
+\input{conteudo/00-introducao}
+
+% conteudo (template)
 \input{conteudo/exemplo/00-exemplo-introducao}
 
 \pagestyle{mainmatter}
+\input{conteudo/xx-tbox-saturator.tex}
+\input{conteudo/xx-resultados.tex}
+
+% conteudo (template)
 \input{conteudo/exemplo/01-exemplo-normas-ime}
 \input{conteudo/exemplo/02-exemplo-usando-o-modelo}
 \input{conteudo/exemplo/03-exemplo-latex}
