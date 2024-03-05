@@ -24,7 +24,7 @@ Given an empty TBox $\mathcal{T}$, the ABox $\mathcal{A}$,
 
 and the repair request $\mathcal{R}$,
 
-$$\mathcal{R} = {\exists related.(Politician \sqcap Businessman)(Albert)}$$
+$$\mathcal{R} = \{\exists related.(Politician \sqcap Businessman)(Albert) \}$$
 
 the optimal repair computed is the qABox denoted by
 
@@ -66,11 +66,90 @@ Finally, applying the partial meet contraction at the saturated ontology results
     \end{aligned}
 \end{equation*}
 
-\section{Scenario \#2: Non-empty TBox and ABox}
+\section{Scenario \#2: Sample JELIA 23}
 \label{sec:scenario-2}
+Given an empty TBox $\mathcal{T}$, the ABox $\mathcal{A}$,
 
-\section{Scenario \#3: ---}
+\begin{equation*}
+    \begin{aligned}
+        \mathcal{A} = \{ Vain(Narcissus), loves(Narcissus, Narcissus) \}
+    \end{aligned}
+\end{equation*}
+
+and the repair request $\mathcal{R}$,
+
+$$\mathcal{R} = \{ Vain(Narcissus) \}$$
+
+the optimal repair computed is the qABox denoted by
+
+\begin{equation*}
+    \begin{aligned}
+        \exists X.\mathcal{A} = \exists \{ x \}.\{ & loves(Narcissus, Narcissus),  \\
+                                                   & loves(Narcissus, x),          \\
+                                                   & loves(x, Narcissus),          \\
+                                                   & loves(x, x),                  \\ 
+                                                   & Vain(x) \}
+    \end{aligned}
+\end{equation*}
+
+Now, to compute the partial meet contraction operation, we first need to saturate the TBox w.r.t. the ABox $\mathcal{A}$, which will result at the following TBox:
+
+\begin{equation*}
+    \begin{aligned}
+        sat^{\mathcal{A}}(\mathcal{T}) = \{ \exists loves.Vain \}
+    \end{aligned}
+\end{equation*}
+
+Finally, applying the partial meet contraction at the saturated ontology results
+
+\begin{equation*}
+    \begin{aligned}
+        \mathcal{A} = \{ loves(Narcissus, Narcissus) \}
+    \end{aligned}
+\end{equation*}
+
+\begin{equation*}
+    \begin{aligned}
+        \mathcal{T} = \{ \exists loves.Vain \}
+    \end{aligned}
+\end{equation*}
+
+\section{Scenario \#3: A sample of a saturation of an ontology with cycle}
 \label{sec:scenario-3}
+
+Given the ontology ABox $\mathcal{A}$,
+
+\begin{equation*}
+    \begin{aligned}
+        \mathcal{A} = \{ & Politician(Albert),     \\
+                         & Businessman(Albert),    \\
+                         & Politician(Bob),        \\
+                         & Businessman(Bob),       \\
+                         & Ambassador(Charlie),    \\
+                         & related(Albert, Bob),   \\
+                         & related(Bob, Charlie),  \\ 
+                         & friend(Charlie, Albert) \}
+    \end{aligned}
+\end{equation*}
+
+the saturation of the TBox $\mathcal{T}$ w.r.t. $\mathcal{A}$ is,
+
+\begin{equation*}
+    \begin{aligned}
+        sat^{\mathcal{A}}(\mathcal{T}) = \{ & \exists related.Politician,  \\
+                                            & \exists related.Businessman, \\
+                                            & \exists related.(\exists friend.Politician),  \\
+                                            & \exists related.(\exists friend.Businessman), \\
+                                            & \exists related.(\exists friend.Ambassador),  \\
+                                            & \exists related.(\exists friend.(\exists friend.Politician)),  \\
+                                            & \exists related.(\exists friend.(\exists friend.Businessman)), \\
+                                            & \exists friend.Ambassador, \\
+                                            & \exists friend.(\exists friend.Politician),  \\
+                                            & \exists friend.(\exists friend.Businessman), \\
+                                            & \exists friend.Politician, \\
+                                            & \exists friend.Businessman \} 
+    \end{aligned}
+\end{equation*}
 
 \section{Scenario \#4: ---}
 \label{sec:scenario-4}
