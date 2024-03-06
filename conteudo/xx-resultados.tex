@@ -10,7 +10,7 @@ To find out whether the TBox saturation process introduced produces a viable res
 \section{Scenario \#1: Empty TBox and non-empty ABox}
 \label{sec:scenario-1}
 
-Given an empty TBox $\mathcal{T}$, the ABox $\mathcal{A}$,
+Given the ontology $\mathcal{O}$ represented by an empty TBox $\mathcal{T}$ and the ABox $\mathcal{A}$,
 
 \begin{equation*}
     \begin{aligned}
@@ -41,34 +41,36 @@ the optimal repair computed is the qABox denoted by
     \end{aligned}
 \end{equation*}
 
-Now, to compute the partial meet contraction operation, we first need to saturate the TBox w.r.t. the ABox $\mathcal{A}$, which will result at the following TBox:
+Now, to compute the partial meet contraction operation, we first need to saturate the ontology w.r.t. the ABox $\mathcal{A}$, which will result at the following:
 
 \begin{equation*}
     \begin{aligned}
-        sat^{\mathcal{A}}(\mathcal{T}) = \{ \exists related.Politician, \exists related.Businessman \}
+        sat(\mathcal{O}) = \{ & Politician(Albert),   \\
+                              & Businessman(Albert),  \\
+                              & Politician(Bob),      \\
+                              & Businessman(Bob),     \\
+                              & related(Albert, Bob), \\ 
+                              & \exists related.Politician(Albert), \\
+                              & \exists related.Businessman(Albert) \}
     \end{aligned}
 \end{equation*}
 
-Finally, applying the partial meet contraction at the saturated ontology results
+Finally, applying the partial meet contraction at $sat(\mathcal{O})$ results:
 
 \begin{equation*}
     \begin{aligned}
-        \mathcal{A} = \{ & Politician(Albert),  \\
-                         & Businessman(Albert), \\
-                         & Businessman(Bob),    \\
-                         & related(Albert, Bob) \}
-    \end{aligned}
-\end{equation*}
-
-\begin{equation*}
-    \begin{aligned}
-        \mathcal{T} = \{ \exists related.Politician, \exists related.Businessman \}
+        \mathcal{O} = \{ & Politician(Albert),   \\
+                         & Businessman(Albert),  \\
+                         & Businessman(Bob),     \\
+                         & related(Albert, Bob), \\
+                         & \exists related.Politician(Albert), \\
+                         & \exists related.Businessman(Albert) \}
     \end{aligned}
 \end{equation*}
 
 \section{Scenario \#2: Sample JELIA 23}
 \label{sec:scenario-2}
-Given an empty TBox $\mathcal{T}$, the ABox $\mathcal{A}$,
+Let $\mathcal{O} = \mathcal{T} \cup \mathcal{A}$ be an ontology such that $\mathcal{T} = \emptyset$ and $\mathcal{A}$,
 
 \begin{equation*}
     \begin{aligned}
@@ -76,7 +78,7 @@ Given an empty TBox $\mathcal{T}$, the ABox $\mathcal{A}$,
     \end{aligned}
 \end{equation*}
 
-and the repair request $\mathcal{R}$,
+Given the repair request $\mathcal{R}$,
 
 $$\mathcal{R} = \{ Vain(Narcissus) \}$$
 
@@ -92,11 +94,11 @@ the optimal repair computed is the qABox denoted by
     \end{aligned}
 \end{equation*}
 
-Now, to compute the partial meet contraction operation, we first need to saturate the TBox w.r.t. the ABox $\mathcal{A}$, which will result at the following TBox:
+Now, to compute the partial meet contraction operation, we first need to saturate the ontology w.r.t. the ABox $\mathcal{A}$, which will result at:
 
 \begin{equation*}
     \begin{aligned}
-        sat^{\mathcal{A}}(\mathcal{T}) = \{ \exists loves.Vain \}
+        sat(\mathcal{O}) = \{ Vain(Narcissus), loves(Narcissus, Narcissus), \exists loves.Vain(Narcissus) \}
     \end{aligned}
 \end{equation*}
 
@@ -104,24 +106,18 @@ Finally, applying the partial meet contraction at the saturated ontology results
 
 \begin{equation*}
     \begin{aligned}
-        \mathcal{A} = \{ loves(Narcissus, Narcissus) \}
-    \end{aligned}
-\end{equation*}
-
-\begin{equation*}
-    \begin{aligned}
-        \mathcal{T} = \{ \exists loves.Vain \}
+        \mathcal{O} = \{ loves(Narcissus, Narcissus), \exists loves.Vain(Narcissus) \}
     \end{aligned}
 \end{equation*}
 
 \section{Scenario \#3: A sample of a saturation of an ontology with cycle}
 \label{sec:scenario-3}
 
-Given the ontology ABox $\mathcal{A}$,
+Given the ontology $\mathcal{O}$,
 
 \begin{equation*}
     \begin{aligned}
-        \mathcal{A} = \{ & Politician(Albert),     \\
+        \mathcal{O} = \{ & Politician(Albert),     \\
                          & Businessman(Albert),    \\
                          & Politician(Bob),        \\
                          & Businessman(Bob),       \\
@@ -132,22 +128,30 @@ Given the ontology ABox $\mathcal{A}$,
     \end{aligned}
 \end{equation*}
 
-the saturation of the TBox $\mathcal{T}$ w.r.t. $\mathcal{A}$ is,
+the saturation of $\mathcal{O}$ is,
 
 \begin{equation*}
     \begin{aligned}
-        sat^{\mathcal{A}}(\mathcal{T}) = \{ & \exists related.Politician,  \\
-                                            & \exists related.Businessman, \\
-                                            & \exists related.(\exists friend.Politician),  \\
-                                            & \exists related.(\exists friend.Businessman), \\
-                                            & \exists related.(\exists friend.Ambassador),  \\
-                                            & \exists related.(\exists friend.(\exists friend.Politician)),  \\
-                                            & \exists related.(\exists friend.(\exists friend.Businessman)), \\
-                                            & \exists friend.Ambassador, \\
-                                            & \exists friend.(\exists friend.Politician),  \\
-                                            & \exists friend.(\exists friend.Businessman), \\
-                                            & \exists friend.Politician, \\
-                                            & \exists friend.Businessman \} 
+        sat(\mathcal{O}) = \{ & Politician(Albert),      \\
+                              & Businessman(Albert),     \\
+                              & Politician(Bob),         \\
+                              & Businessman(Bob),        \\
+                              & Ambassador(Charlie),     \\
+                              & related(Albert, Bob),    \\
+                              & related(Bob, Charlie),   \\ 
+                              & friend(Charlie, Albert), \\
+                              & \exists related.Politician(Albert),  \\
+                              & \exists related.Businessman(Albert), \\
+                              & \exists related.(\exists friend.Politician)(Albert),  \\
+                              & \exists related.(\exists friend.Businessman)(Albert), \\
+                              & \exists related.(\exists friend.Ambassador)(Albert),  \\
+                              & \exists related.(\exists friend.(\exists friend.Politician))(Albert),  \\
+                              & \exists related.(\exists friend.(\exists friend.Businessman))(Albert), \\
+                              & \exists friend.Ambassador(Bob), \\
+                              & \exists friend.(\exists friend.Politician)(Bob),  \\
+                              & \exists friend.(\exists friend.Businessman)(Bob), \\
+                              & \exists friend.Politician(Charlie), \\
+                              & \exists friend.Businessman(Charlie) \} 
     \end{aligned}
 \end{equation*}
 
