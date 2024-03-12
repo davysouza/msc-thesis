@@ -61,8 +61,8 @@ Finally, applying the partial meet contraction at $sat(\mathcal{O})$ results:
     \begin{aligned}
         \mathcal{O} = \{ & Politician(Albert),   \\
                          & Businessman(Albert),  \\
+                         & Politician(Bob),      \\
                          & Businessman(Bob),     \\
-                         & related(Albert, Bob), \\
                          & \exists related.Politician(Albert), \\
                          & \exists related.Businessman(Albert) \}
     \end{aligned}
@@ -82,7 +82,7 @@ Given the repair request $\mathcal{R}$,
 
 $$\mathcal{R} = \{ Vain(Narcissus) \}$$
 
-the optimal repair computed is the qABox denoted by
+there is no finite $\mathcal{EL}$ ABox that is an optimal repair. However, an optimal repair can be obtained by using a more general notion of ABoxes, the quantified ABoxes:
 
 \begin{equation*}
     \begin{aligned}
