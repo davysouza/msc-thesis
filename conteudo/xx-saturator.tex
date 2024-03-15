@@ -1,0 +1,124 @@
+%!TeX root=../tese.tex
+%("dica" para o editor de texto: este arquivo é parte de um documento maior)
+% para saber mais: https://tex.stackexchange.com/q/78101
+
+\chapter{Ontology saturator}
+
+The saturation process consists of extending the ontology with consequences entailed by the role assertions within it. Essentially, a role assertion denotes a relationship between two individuals within the ontology. For instance, when we say that $loves(John, Mary)$ and $Nurse(Mary)$ we indicate that John loves Mary, while we also say that there exists an individual (\textit{John}) that loves a nurse. The aim is to saturate the ontology with such implicit knowledge. Further assertions like $loves(Mary, Sam)$ and $Scientist(Sam)$, would extend this, suggesting that there exists an individual (\textit{John}) who loves another individual (\textit{Mary}) who in turn loves a scientist.
+
+To extend these assertions, we initially create a graph depiciting the relationship between the individuals, then traverse the graph using a depth-first search (DFS) algorithm adding existential restrictions of the form $\exists r.C$. These restrictions represent the existence of a role assertion $r(a, b)$ where $C$ either denotes a concept assertion $C$ such that $b$ is an instance of $C$ ($C(b) \in \mathcal{O}$) or $C$ represents an existential restriction of $b$.
+
+Program ~\ref{prog:create-relationship-graph} provides a concise description of how to create the relationship graph.
+
+\begin{programruledcaption}{Ontology relationship graph creation.\label{prog:create-relationship-graph}}
+    \begin{lstlisting}[
+      language=pseudocode,
+      style=pseudocode,
+      style=wider,
+      commentstyle=\itshape\color{gray!90},
+      functions={CreateRelationshipGraph},
+      specialidentifiers={is},
+    ]
+        \textbf{\textsc{Input}}: The ontology $\mathcal{O}$ that will be used to create the graph
+        \textbf{\textsc{Output}}: A relationship graph $\mathcal{G}$
+        Function CreateRelationshipGraph($\mathcal{O}$)
+            $\mathcal{G}$ := $\emptyset$ // empty graph $\mathcal{G}$
+            for axiom $\in \mathcal{O}$ do
+                if axiom is role assertion then
+                    $\mathcal{G}$ := $\mathcal{G}$ $\cup$ { axiom.subject, { axiom.object, axiom.role } } // Add the nodes \textbf{subject} and \textbf{object}, and the edge \textbf{role(subject, object)} to $\mathcal{G}$ 
+                end
+            end 
+            return $\mathcal{G}$
+        end
+    \end{lstlisting}
+\end{programruledcaption}
+
+Applying the Program ~\ref{prog:create-relationship-graph} to the example described at the begining of this chapter, results at the relationship graph of Figure ~\ref{fig:graph-1}.
+
+\begin{figure}
+    \centering
+    \input{figuras/graph-1.tkz}
+    \caption{\texttt{Relationship graph representing the role assertions $loves(John, Mary)$ and $loves(Mary, Sam)$}.\label{fig:graph-1}}
+\end{figure}
+
+Given the graph, the algorithm of saturation will traverse the graph from the root to one leaf, adding the existential restrictions found. When finding a leaf, the saturation algorithm look at all concept assertions and existential restrictions related to this leaf and add it as an existential restriction to its parent node. At our example, when exploring Sam's node, generates the assertion $\exists loves.Scientist(Mary)$ to be added to the ontology. In turn, when going back to Mary's node, all it class assertions and existential restrictions are added to John as an existential restriction. For instance, the assertions $\exists loves.Nurse(John)$ and $\exists loves.(\exists loves.Scientist)(John)$ are added.
+
+Program ~\ref{prog:dfs-saturation} describes the adaptation to the DFS algorithm in order to saturate the ontology.
+
+\begin{programruledcaption}{DFS algorithm adapted with saturation\label{prog:dfs-saturation}}
+    \begin{lstlisting}[
+      language=pseudocode,
+      style=pseudocode,
+      style=wider,
+      commentstyle=\itshape\color{gray!90},
+      functions={DFS, GenerateByExistingAssertions, GenerateByClassAssertions, GetRole},
+      specialidentifiers={},
+    ]
+        \textbf{\textsc{Input}}: The $parent$ node and the current $node$
+        \textbf{\textsc{Output}}: A list $\mathcal{A}$ of all axioms to be added to the ontology
+        Function DFS(parent, node) 
+            Nodes[node] := EXPLORED // A global list of all nodes. All positions are started as \textbf{UNVISITED} and changed to \textbf{EXPLORED} when the current node is started
+            $\mathcal{A}$ := $\emptyset$ 
+            for u $\in$ Adjacents($\mathcal{G}$, node) do
+                if Nodes[u] = UNVISITED then // Important check to avoid cycles
+                    $\mathcal{A}$ := $\mathcal{A}$ + DFS(node, u)
+                else if Nodes[u] = EXPLORED then
+                    role := GetRole($\mathcal{G}$, node, u) // Returns the role \textbf{r} such that \textbf{r(node, u)}
+                    $\mathcal{A}$ := $\mathcal{A}$ + GenerateByExistingAssertions($\mathcal{A}$, node, role)
+                    $\mathcal{A}$ := $\mathcal{A}$ + GenerateByClassAssertions(node, u, role)
+                end
+            end
+            if parent != null then
+                role := GetRole($\mathcal{G}$, parent, node)
+                $\mathcal{A}$ := $\mathcal{A}$ + GenerateByExistingAssertions($\mathcal{A}$, parent, role)
+                $\mathcal{A}$ := $\mathcal{A}$ + GenerateByClassAssertions(parent, node, role)
+            end
+            Nodes[node] := VISITED // By the end of execution, the node is marked as \textbf{VISITED}
+            return $\mathcal{A}$
+        end
+    \end{lstlisting}
+\end{programruledcaption}
+
+Finally, Program ~\ref{prog:add-class-assertion-axioms} explains how to add an existential restriction from the existing restrictions while Program ~\ref{prog:add-role-assertion-axioms} explains how the new assertions are created based on the class assertions of the subject individual.
+
+\begin{programruledcaption}{Add an assertion based on the existing restrictions\label{prog:add-role-assertion-axioms}}
+    \begin{lstlisting}[
+      language=pseudocode,
+      style=pseudocode,
+      style=wider,
+      commentstyle=\itshape\color{gray!90},
+      functions={},
+      specialidentifiers={},
+    ]
+        \textbf{\textsc{Input}}: The existing list of axioms \textbf{$\mathcal{A}$}, the \textbf{individual} and the \textbf{role} to create the new restriction
+        \textbf{\textsc{Output}}: A list of all axioms to be added to the ontology
+        Function GenerateByExistingAssertions($\mathcal{A}$, individual, role) 
+            $\mathcal{A}'$ := $\emptyset$
+            for Axiom $\in$ $\mathcal{A}$ do
+                $\mathcal{A}'$ := $\mathcal{A}'$ + $\exists role.(Axiom)(individual)$
+            end
+            return $\mathcal{A} \cup \mathcal{A}'$
+        end
+    \end{lstlisting}
+\end{programruledcaption}
+
+\begin{programruledcaption}{Add an assertion based on the class assertion axioms of the object\label{prog:add-class-assertion-axioms}}
+    \begin{lstlisting}[
+      language=pseudocode,
+      style=pseudocode,
+      style=wider,
+      commentstyle=\itshape\color{gray!90},
+      functions={GetClasses},
+      specialidentifiers={},
+    ]
+        \textbf{\textsc{Input}}: The \textbf{subject}, \textbf{object} and \textbf{role}
+        \textbf{\textsc{Output}}: A list $\mathcal{A}$ of the generated axioms
+        Function GenerateByClassAssertions(subject, object, role) 
+            $\mathcal{A}$ := $\emptyset$
+            for Class $\in$ GetClasses($\mathcal{O}$, object) do
+                $\mathcal{A}$ := $\mathcal{A}$ + $\exists role.Class(subject)$
+            end
+            return $\mathcal{A}$
+        end
+    \end{lstlisting}
+\end{programruledcaption}

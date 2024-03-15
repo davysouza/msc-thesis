@@ -1,0 +1,37 @@
+
+
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,328); %set diagram left start at 0, and has height of 328
+
+%Shape: Rectangle [id:dp23467711159144478] 
+\draw   (0,1) -- (234.33,1) -- (234.33,109.02) -- (0,109.02) -- cycle ;
+%Shape: Ellipse [id:dp18012345508039274] 
+\draw  [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=1 ] (17.26,80.53) .. controls (17.26,68.33) and (27.15,58.44) .. (39.35,58.44) .. controls (51.55,58.44) and (61.43,68.33) .. (61.43,80.53) .. controls (61.43,92.73) and (51.55,102.62) .. (39.35,102.62) .. controls (27.15,102.62) and (17.26,92.73) .. (17.26,80.53) -- cycle ;
+%Shape: Ellipse [id:dp8026909624921783] 
+\draw   (96.34,31.14) .. controls (96.34,18.94) and (106.23,9.06) .. (118.42,9.06) .. controls (130.62,9.06) and (140.51,18.94) .. (140.51,31.14) .. controls (140.51,43.34) and (130.62,53.23) .. (118.42,53.23) .. controls (106.23,53.23) and (96.34,43.34) .. (96.34,31.14) -- cycle ;
+
+%Shape: Ellipse [id:dp6991896567705558] 
+\draw   (177.16,79.94) .. controls (177.16,67.74) and (187.05,57.85) .. (199.25,57.85) .. controls (211.44,57.85) and (221.33,67.74) .. (221.33,79.94) .. controls (221.33,92.14) and (211.44,102.02) .. (199.25,102.02) .. controls (187.05,102.02) and (177.16,92.14) .. (177.16,79.94) -- cycle ;
+
+%Straight Lines [id:da8066154096435667] 
+\draw    (58.66,69.08) -- (96.73,38.4) ;
+\draw [shift={(98.28,37.14)}, rotate = 141.13] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+%Straight Lines [id:da6693510085950531] 
+\draw    (136.72,43.65) -- (174.76,72.6) ;
+\draw [shift={(176.35,73.81)}, rotate = 217.28] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+
+% Text Node
+\draw (183.25,71.94) node [anchor=north west][inner sep=0.75pt]   [align=left] {Sam};
+% Text Node
+\draw (100.48,23.14) node [anchor=north west][inner sep=0.75pt]   [align=left] {Mary};
+% Text Node
+\draw (147.6,33.5) node [anchor=north west][inner sep=0.75pt]  [rotate=-36.78] [align=left] {\textit{loves}};
+% Text Node
+\draw (52.98,55.4) node [anchor=north west][inner sep=0.75pt]  [rotate=-320.45] [align=left] {\textit{loves}};
+% Text Node
+\draw (21.46,72.53) node [anchor=north west][inner sep=0.75pt]  [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,opacity=1 ] [align=left] {John};
+
+
+\end{tikzpicture}
