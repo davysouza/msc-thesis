@@ -10,11 +10,11 @@ To find out whether the ontology saturation process introduced produces a viable
 \section{Scenario \#1: Empty TBox and non-empty ABox}
 \label{sec:scenario-1}
 
-Given the ontology $\mathcal{O}$ represented by an empty TBox $\mathcal{T}$ and the ABox $\mathcal{A}$,
+The first example concists of an ontology with no terminological knowledge but only assertions about individuals. The ontology below represents that Albert and  Bob are both politicians and businessmen, and that Albert is related to Bob:
 
 \begin{equation*}
     \begin{aligned}
-        \mathcal{A} = \{ & Politician(Albert),  \\
+        \mathcal{O} = \{ & Politician(Albert),  \\
                          & Businessman(Albert), \\
                          & Politician(Bob),     \\
                          & Businessman(Bob),    \\
@@ -22,11 +22,11 @@ Given the ontology $\mathcal{O}$ represented by an empty TBox $\mathcal{T}$ and 
     \end{aligned}
 \end{equation*}
 
-and the repair request $\mathcal{R}$,
+For this example, we want to remove the consequence that Albert is related to someone that is both politician and businessman. For instance:
 
 $$\mathcal{R} = \{\exists related.(Politician \sqcap Businessman)(Albert) \}$$
 
-the optimal repair computed is the qABox denoted by
+The optimal repair computed is the quatified ABox denoted by:
 
 \begin{equation*}
     \begin{aligned}
@@ -68,9 +68,11 @@ Finally, applying the partial meet contraction at $sat(\mathcal{O})$ results:
     \end{aligned}
 \end{equation*}
 
-\section{Scenario \#2: Sample JELIA 23}
+Note that this is only one of the possible remainders of the partial meet contraction operation, but there exists other possible repairs for this example.
+
+\section{Scenario \#2: Example of JELIA 23}
 \label{sec:scenario-2}
-Let $\mathcal{O} = \mathcal{T} \cup \mathcal{A}$ be an ontology such that $\mathcal{T} = \emptyset$ and $\mathcal{A}$,
+The example of \citep{Baader-JELIA23} says that Narcissus is a vain individual that loves itself and we want to remove the assertion that Narcissus is vain. For instance, let $\mathcal{O} = \mathcal{T} \cup \mathcal{A}$ be an ontology such that $\mathcal{T} = \emptyset$ and $\mathcal{A}$ is defined by,
 
 \begin{equation*}
     \begin{aligned}
@@ -78,11 +80,7 @@ Let $\mathcal{O} = \mathcal{T} \cup \mathcal{A}$ be an ontology such that $\math
     \end{aligned}
 \end{equation*}
 
-Given the repair request $\mathcal{R}$,
-
-$$\mathcal{R} = \{ Vain(Narcissus) \}$$
-
-there is no finite $\mathcal{EL}$ ABox that is an optimal repair. However, an optimal repair can be obtained by using a more general notion of ABoxes, the quantified ABoxes:
+Given the repair request $\mathcal{R} = \{ Vain(Narcissus) \}$, there is no finite $\mathcal{EL}$ ABox that is an optimal repair. However, an optimal repair can be obtained by using a more general notion of ABoxes, the quantified ABoxes:
 
 \begin{equation*}
     \begin{aligned}
@@ -94,7 +92,7 @@ there is no finite $\mathcal{EL}$ ABox that is an optimal repair. However, an op
     \end{aligned}
 \end{equation*}
 
-Now, to compute the partial meet contraction operation, we first need to saturate the ontology w.r.t. the ABox $\mathcal{A}$, which will result at:
+By the other hand, to compute the partial meet contraction operation, we first need to saturate the ontology w.r.t. the ABox $\mathcal{A}$, which will result at:
 
 \begin{equation*}
     \begin{aligned}
@@ -110,8 +108,104 @@ Finally, applying the partial meet contraction at the saturated ontology results
     \end{aligned}
 \end{equation*}
 
-\section{Scenario \#3: A sample of a saturation of an ontology with cycle}
+We can see that the outcome of the partial meet contraction operation is not equivalent with the optimal repair. That happens due to the use of quantified ABoxes in the optimal repair, resulting in a repair beyond of the original language ($\mathcal{EL}$). In contrast, partial meet contraction operations keep us within the $\mathcal{EL}$.
+
+\section{Scenario \#3: Example of ESWC 2022}
 \label{sec:scenario-3}
+
+\subsection{First example}
+
+Given the ABox $\mathcal{A} $ and the TBox $\mathcal{T}$:
+
+\begin{equation*}
+    \begin{aligned}
+        \mathcal{A} = \{ parent(Ben, Jerry), Rich(Jerry), Famous(Jerry) \}
+    \end{aligned}
+\end{equation*}
+
+\begin{equation*}
+    \begin{aligned}
+        \mathcal{T} = \{ Famous \sqsubseteq Rich \}
+    \end{aligned}
+\end{equation*}
+
+We want to remove $\mathcal{R} = \{ \exists parent.(Rich \sqcap Famous)(Ben) \}$.
+
+The resulting qABox is
+
+\begin{equation*}
+    \begin{aligned}
+        \mathcal{A} = \exists \{ y \}.\{ parent(Ben, y), Rich(y), Famous(Jerry), Rich(Jerry) \}
+    \end{aligned}
+\end{equation*}
+
+\subsection{Second example}
+
+Given the ABox $\mathcal{A}$ and the TBox $\mathcal{T}$:
+
+\begin{equation*}
+    \begin{aligned}
+        \mathcal{A} = \{ parent(Ben, Jerry), Rich(Jerry) \}
+    \end{aligned}
+\end{equation*}
+
+\begin{equation*}
+    \begin{aligned}
+        \mathcal{T} = \{ & \exists parent.Rich \sqsubseteq Famous,   \\
+                         & Famous \sqsubseteq \exists friend.Famous, \\ 
+                         & \exists friend.Famous \sqsubseteq Famous  \}
+    \end{aligned}
+\end{equation*}
+
+We want to remove that $\mathcal{R} = \{ Famous(Ben) \}$. 
+
+The resulting qABox is:
+
+\begin{equation*}
+    \begin{aligned}
+        \mathcal{A} = \exists \{ x, y \}.\{ parent(Ben, x), Rich(Jerry), friend(Ben, y), friend(y, y) \}
+    \end{aligned}
+\end{equation*}
+
+This qABox cannot be expressed by an IQ-equivalent ABox because of the cycle $friend(y,y)$.
+
+\subsection{Third example: A cycle that is not a problem}
+
+Given the ABox $\mathcal{A}$ and the TBox $\mathcal{T}$:
+
+\begin{equation*}
+    \begin{aligned}
+        \mathcal{A} = \{ parent(Ben, Jerry), Rich(Jerry) \}
+    \end{aligned}
+\end{equation*}
+
+\begin{equation*}
+    \begin{aligned}
+        \mathcal{T} = \{ & \exists parent.Rich \sqsubseteq Famous,  \\
+                         & Famous \sqsubseteq \exists friend.Famous \}
+    \end{aligned}
+\end{equation*}
+
+We want to remove that $\mathcal{R} = \{ Famous(Ben) \}$.
+
+The resulting qABox is:
+
+\begin{equation*}
+    \begin{aligned}
+        \mathcal{A} = \exists \{ x, y \}.\{ parent(Ben, x), Rich(Jerry), friend(Ben, y), friend(y, y), Famous(y) \}
+    \end{aligned}
+\end{equation*}
+
+This qABox is IQ-equivalent to the ABox:
+
+\begin{equation*}
+    \begin{aligned}
+        \mathcal{A} = \{ \exists parent.\top(Ben), Rich(Jerry), \exists friend.Famous(Ben) \}
+    \end{aligned}
+\end{equation*}
+
+\section{Scenario \#4: A simple example of a saturation process in an ontology with a cycle}
+\label{sec:scenario-4}
 
 Given the ontology $\mathcal{O}$,
 
@@ -154,40 +248,3 @@ the saturation of $\mathcal{O}$ is,
                               & \exists friend.Businessman(Charlie) \} 
     \end{aligned}
 \end{equation*}
-
-\section{Scenario \#4: ---}
-\label{sec:scenario-4}
-
-% \begin{table}[]
-%     \setlength{\extrarowheight}{7pt}
-%     \begin{tabular}{ll}
-%         \hline
-%         \multicolumn{2}{l}{\textbf{Example 01}: Politicians and businessman ontology}          \\ 
-%         \hline
-%         \texttt{1}. & \texttt{Politician(Albert)}  \\ 
-%         \texttt{2}. & \texttt{Businessman(Albert)} \\
-%         \texttt{3}. & \texttt{Politician(Bob)}  \\ 
-%         \texttt{4}. & \texttt{Businessman(Bob)} \\
-%         \texttt{5}. & \texttt{related(Albert, Bob)} \\
-%         \hline
-%     \end{tabular}
-% \end{table}
-
-% P(a)
-% B(a)
-
-% P(b)
-% B(b)
-
-% F(c)
-
-% r(a,b)
-% r(b,c)
-
-% exists r.P
-% exists r.B
-% exists r.F
-
-% exists r.(exists r.F)(a)
-
-% a -r-> P(b) -t-> F(c)
