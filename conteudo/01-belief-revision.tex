@@ -1,0 +1,26 @@
+%!TeX root=../tese.tex
+%("dica" para o editor de texto: este arquivo é parte de um documento maior)
+% para saber mais: https://tex.stackexchange.com/q/78101
+
+\chapter{Belief Revision}
+
+\textit{Belief Revision} is a field of Knowledge Representation that aims to understand the epistemic states of an agent. An \textit{epistemic state} of an agent represents all of their beliefs in a given moment \citep{Ribeiro2010}. In other words, Belief Revision seeks to comprehend the agent's behavior when faced with changes in its beliefs \citep{Ribeiro2010,Matos2021}.
+
+The seminal contribution to Belief Revision was made by \cite{AGM1985} who proposed a method for representing the agent's epistemic state alongside a set of operations to manage the changes in its beliefs when receiving new information. The guiding principle behind this method is the \textit{principle of minimal change}, which suggests that a rational agent should adjust its beliefs as little as possible in order to accommodate the new information \citep{Peppas2008}. Due to the authors' names, this model became known as the AGM framework.
+
+In the AGM model, \textit{beliefs} are represented by formulas of a propositional language and epistemic states of an agent are represented by a logically closed sets of propositions, known as \textit{belief sets} \citep{Wassermann2000}. This model defines three operations that can be performed on belief sets: contraction, expansion and revision.
+
+\section{Expansion}
+\label{sec:expansion}
+
+An \textit{expansion} operation consists of adding new information to the belief set which might potentially lead us to an inconsistent belief state. If we have a belief set $K$ and a belief $\varphi$, the resulting expansion $K + \varphi$ is obtained by adding the new belief to the initial belief set and computing the logical consequences of the resulting set:
+
+$$K + \varphi = Cn(K \cup \{ \varphi \}),$$
+
+where $Cn$ is a consequence operator and $K \subseteq K + \varphi$ (which justifies the term expansion). In other words, an expansion adds a new belief along with all its consequences to the initial belief set. As the operation does not modify any existing beliefs, it may introduce an inconsistency to the entire belief set.
+
+\section{Contraction}
+\label{sec:contraction}
+
+\section{Revision}
+\label{sec:revision}
