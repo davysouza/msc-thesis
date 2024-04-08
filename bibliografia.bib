@@ -53,89 +53,120 @@
 % title = {Some title},
 % ...
 
-@article{AGM1985, 
-  title={On the logic of theory change: Partial meet contraction and revision functions}, 
-  volume={50}, 
-  DOI={10.2307/2274239}, 
-  number={2}, 
-  journal={Journal of Symbolic Logic}, 
-  author={Alchourrón, Carlos E. and Gärdenfors, Peter and Makinson, David}, 
-  year={1985}, 
-  pages={510–530}
+@inbook{ AM1981,
+  author    = {Alchourr{\'o}n, Carlos E. and Makinson, David},
+  title     = {Hierarchies of Regulations and their Logic},
+  bookTitle = {New Studies in Deontic Logic: Norms, Actions, and the Foundations of Ethics},
+  editor    = {Hilpinen, Risto},
+  publisher = {Springer Netherlands},
+  address   = {Dordrecht},
+  pages     = {125--148},
+  abstract  = {We study some of the ways in which the imposition of a partial ordering on a code of laws or regulations can serve to overcome logical imperfections in the code itself. In particular, we first show how partial orderings of a code, and derivative orderings of its power set, may be used to confer uniqueness upon otherwise indefinite derogations by ranking remainders; and second, we show how such orderings may be used to resolve contradictions implicit in a code by a process which we shall call delivery. Finally, we investigate the relations between derogation and delivery, showing that although the two processes appear and are generally assumed to be quite different from each other, nevertheless for finite inconsistent codes, the composite process of derogating and then selecting a remainder turns out to be equipowerful with delivery. For consistent codes, where delivery reduces to its underlying consequence operation and so is of no special interest, the correspondence is with a more general process of `relative delivery'. Sections 2 and 3, on derogation and the resolution of contradictions respectively, are written so that they may be read in either order. Section 4, on the relations between the two, depends on both. The study is carried out mathematically, and the reader is assumed to be familiar with elementary properties of partial orderings and consequence operations. Throughout, however, attention is also given to the realities of juridical practice.},
+  year      = {1981},
+  isbn      = {978-94-009-8484-4},
+  doi       = {10.1007/978-94-009-8484-4_5},
+  url       = {https://doi.org/10.1007/978-94-009-8484-4_5}
+}
+
+@article{ AM1982,
+  title     = {On the logic of theory change: Contraction functions and their associated revision functions},
+  author    = {Alchourr{\'o}n, Carlos E. and Makinson, David},
+  journal   = {Theoria},
+  publisher = {Wiley},
+  volume    = {48},
+  ISSN      = {1755-2567},
+  number    = {1},
+  pages     = {14--37},
+  month     = apr,
+  year      = {1982},
+  doi       = {10.1111/j.1755-2567.1982.tb00480.x},
+  url       = {http://dx.doi.org/10.1111/j.1755-2567.1982.tb00480.x},
+}
+
+@article{ AGM1985, 
+  author  = {Alchourrón, Carlos E. and Gärdenfors, Peter and Makinson, David}, 
+  title   = {On the logic of theory change: Partial meet contraction and revision functions}, 
+  journal = {Journal of Symbolic Logic}, 
+  volume  = {50}, 
+  number  = {2}, 
+  pages   = {510--530},
+  year    = {1985},
+  doi     = {10.2307/2274239}
 }
 
 @inproceedings{ Baader-CADE2021,
-  author = {Franz {Baader} and Patrick {Koopmann} and Francesco {Kriegel} and Adrian {Nuradiansyah}},
+  author    = {Franz {Baader} and Patrick {Koopmann} and Francesco {Kriegel} and Adrian {Nuradiansyah}},
+  title     = {{Computing Optimal Repairs of Quantified ABoxes w.r.t. Static $\mathcal{E\!L}$ TBoxes}},
   booktitle = {Proceedings of the 28th International Conference on Automated Deduction (CADE-28), July 11--16, 2021, Virtual Event, United States},
-  doi = {https://doi.org/10.1007/978-3-030-79876-5_18},
-  editor = {Andr{\'e} {Platzer} and Geoff {Sutcliffe}},
-  pages = {309--326},
-  series = {Lecture Notes in Computer Science},
-  title = {{Computing Optimal Repairs of Quantified ABoxes w.r.t. Static $\mathcal{E\!L}$ TBoxes}},
-  volume = {12699},
-  year = {2021},
+  editor    = {Andr{\'e} {Platzer} and Geoff {Sutcliffe}},
+  pages     = {309--326},
+  series    = {Lecture Notes in Computer Science},
+  volume    = {12699},
+  year      = {2021},
+  doi       = {https://doi.org/10.1007/978-3-030-79876-5_18}
 }
 
-@inproceedings{Baader-ESWC2022,
-  author="Baader, Franz and Koopmann, Patrick and Kriegel, Francesco and Nuradiansyah, Adrian",
-  editor="Groth, Paul and Vidal, Maria-Esther and Suchanek, Fabian and Szekley, Pedro and Kapanipathi, Pavan and Pesquita, Catia and Skaf-Molli, Hala and Tamper, Minna",
-  title="Optimal ABox Repair w.r.t. Static $\mathcal{E\!L}$ TBoxes: From Quantified ABoxes Back to ABoxes",
-  booktitle="The Semantic Web",
-  year="2022",
-  publisher="Springer International Publishing",
-  address="Cham",
-  pages="130--146",
-  abstract="Errors in Description Logic (DL) ontologies are often detected when a reasoner computes unwanted consequences. The question is then how to repair the ontology such that the unwanted consequences no longer follow, but as many of the other consequences as possible are preserved. The problem of computing such optimal repairs was addressed in our previous work in the setting where the data (expressed by an ABox) may contain errors, but the schema (expressed by an $\mathcal{E\!L}$ TBox) is assumed to be correct. Actually, we consider a generalization of ABoxes called quantified ABoxes (qABoxes) both as input for and as result of the repair process. Using qABoxes for repair allows us to retain more information, but the disadvantage is that standard DL systems do not accept qABoxes as input. This raises the question, investigated in the present paper, whether and how one can obtain optimal repairs if one restricts the output of the repair process to being ABoxes. In general, such optimal ABox repairs need not exist. Our main contribution is that we show how to decide the existence of optimal ABox repairs in exponential time, and how to compute all such repairs in case they exist.",
-  isbn="978-3-031-06981-9"
+@inproceedings{ Baader-ESWC2022,
+  author    = {Baader, Franz and Koopmann, Patrick and Kriegel, Francesco and Nuradiansyah, Adrian},
+  title     = {Optimal ABox Repair w.r.t. Static $\mathcal{E\!L}$ TBoxes: From Quantified ABoxes Back to ABoxes},
+  booktitle = {The Semantic Web},
+  editor    = {Groth, Paul and Vidal, Maria-Esther and Suchanek, Fabian and Szekley, Pedro and Kapanipathi, Pavan and Pesquita, Catia and Skaf-Molli, Hala and Tamper, Minna},
+  publisher = {Springer International Publishing},
+  address   = {Cham},
+  pages     = {130--146},
+  abstract  = {Errors in Description Logic (DL) ontologies are often detected when a reasoner computes unwanted consequences. The question is then how to repair the ontology such that the unwanted consequences no longer follow, but as many of the other consequences as possible are preserved. The problem of computing such optimal repairs was addressed in our previous work in the setting where the data (expressed by an ABox) may contain errors, but the schema (expressed by an $\mathcal{E\!L}$ TBox) is assumed to be correct. Actually, we consider a generalization of ABoxes called quantified ABoxes (qABoxes) both as input for and as result of the repair process. Using qABoxes for repair allows us to retain more information, but the disadvantage is that standard DL systems do not accept qABoxes as input. This raises the question, investigated in the present paper, whether and how one can obtain optimal repairs if one restricts the output of the repair process to being ABoxes. In general, such optimal ABox repairs need not exist. Our main contribution is that we show how to decide the existence of optimal ABox repairs in exponential time, and how to compute all such repairs in case they exist.},
+  year      = {2022},
+  isbn      = {978-3-031-06981-9}
 }
 
 @inproceedings{ Baader-JELIA23,
-  author="Baader, Franz and Koopmann, Patrick and Kriegel, Francesco",
-  editor="Gaggl, Sarah and Martinez, Maria Vanina and Ortiz, Magdalena",
-  title="Optimal Repairs in the Description Logic $\mathcal{E\!L}$ Revisited",
-  booktitle="Logics in Artificial Intelligence",
-  year="2023",
-  publisher="Springer Nature Switzerland",
-  address="Cham",
-  pages="11--34",
-  abstract="Ontologies based on Description Logics may contain errors, which are usually detected when reasoning produces consequences that follow from the ontology, but do not hold in the modelled application domain. In previous work, we have introduced repair approaches for {\$}{\$}{\backslash}mathcal{\{}E{\}}{\backslash}mathcal{\{}L{\}}{\$}{\$}ELontologies that are optimal in the sense that they preserve a maximal amount of consequences. In this paper, we will, on the one hand, review these approaches, but with an emphasis on motivation rather than on technical details. On the other hand, we will describe new results that address the problems that optimal repairs may become very large or need not even exist unless strong restrictions on the terminological part of the ontology apply. We will show how one can deal with these problems by introducing concise representations of optimal repairs.",
-  isbn="978-3-031-43619-2"
+  author    = {Baader, Franz and Koopmann, Patrick and Kriegel, Francesco},
+  title     = {Optimal Repairs in the Description Logic $\mathcal{E\!L}$ Revisited},
+  booktitle = {Logics in Artificial Intelligence},
+  editor    = {Gaggl, Sarah and Martinez, Maria Vanina and Ortiz, Magdalena},
+  publisher = {Springer Nature Switzerland},
+  address   = {Cham},
+  pages     = {11--34},
+  abstract  = {Ontologies based on Description Logics may contain errors, which are usually detected when reasoning produces consequences that follow from the ontology, but do not hold in the modelled application domain. In previous work, we have introduced repair approaches for {\$}{\$}{\backslash}mathcal{\{}E{\}}{\backslash}mathcal{\{}L{\}}{\$}{\$}ELontologies that are optimal in the sense that they preserve a maximal amount of consequences. In this paper, we will, on the one hand, review these approaches, but with an emphasis on motivation rather than on technical details. On the other hand, we will describe new results that address the problems that optimal repairs may become very large or need not even exist unless strong restrictions on the terminological part of the ontology apply. We will show how one can deal with these problems by introducing concise representations of optimal repairs.},
+  year      = {2023},
+  isbn      = {978-3-031-43619-2}
 }
 
-@masterthesis{Matos2021,
-  title = {Pseudo-contraction operations for description logics},
-  url = {http://dx.doi.org/10.11606/D.45.2021.tde-02092021-131750},
-  DOI = {10.11606/d.45.2021.tde-02092021-131750},
+@masterthesis{ Matos2021,
+  author = {Matos, Vinícius Bitencourt},
+  title  = {Pseudo-contraction operations for description logics},
   school = {Universidade de São Paulo, Agência USP de Gestão da Informação Acadêmica (AGUIA)},
-  author = {Matos,  Vinícius Bitencourt},
-  year = {2021}
+  url    = {http://dx.doi.org/10.11606/D.45.2021.tde-02092021-131750},
+  year   = {2021},
+  doi    = {10.11606/d.45.2021.tde-02092021-131750},
 }
 
-@incollection{Peppas2008,
+@incollection{ Peppas2008,
+  author    = {Peppas, Pavlos},
   title     = {Chapter 8 - Belief Revision},
   booktitle = {Handbook of Knowledge Representation},
-  author    = {Peppas, Pavlos},
   publisher = {Elsevier},
   pages     = {317--360},
   series    = {Foundations of artificial intelligence},
-  year      =  2008
+  year      = {2008}
 }
 
-@phdthesis{Ribeiro2010,
-  title = {Revisão de crenças em lógicas de descrição e em outras lógicas não clássicas},
-  url = {http://dx.doi.org/10.11606/T.45.2010.tde-16112010-155644},
-  DOI = {10.11606/t.45.2010.tde-16112010-155644},
+@phdthesis{ Ribeiro2010,
+  author = {Ribeiro, Marcio Moretto},
+  title  = {Revisão de crenças em lógicas de descrição e em outras lógicas não clássicas},
   school = {Universidade de São Paulo, Agência USP de Gestão da Informação Acadêmica (AGUIA)},
-  author = {Ribeiro,  Marcio Moretto},
-  year = {2010}
+  url    = {http://dx.doi.org/10.11606/T.45.2010.tde-16112010-155644},
+  year   = {2010},
+  doi    = {10.11606/t.45.2010.tde-16112010-155644}
 }
 
-@book{Wassermann2000,
-  title     = {Resource-Bounded Belief Revision},
+@book{ Wassermann2000,
   author    = {Wassermann, Renata},
+  title     = {Resource-Bounded Belief Revision},
   publisher = {ILLC Dissertation Series 2000-01},
-  year      = 1998,
-  school    = {Universiteit van Amsterdam}
+  school    = {Universiteit van Amsterdam},
+  year      = {1998},
+  isbn      = {90-5776-040-1}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
