@@ -124,10 +124,62 @@ In \textit{partial meet contraction}, a selection function selects maximal subse
 
 \section{Belief bases}
 
-The AGM paradigm treated all beliefs in a belief set equally, making no distinction between basic beliefs and those inferred from the basic ones. In \citet{Hansson1993}, Hansson proposed a significant generalization by introducing belief bases. A \textit{belief base} is a set of propositions that is not closed under logical consequence. Its elements represent beliefs that are held independently of any other belief or set of beliefs \citep{Hansson2022}. In this way, models utilizing belief bases provide enhanced expressiveness compared to the belief set presented in \citet{AGM1985}.
+The AGM paradigm treated all beliefs in a belief set equally, making no distinction between basic beliefs and those inferred from the basic ones. In \citet{Hansson1993}, \citeauthor{Hansson1993} proposed a significant generalization by introducing belief bases. A \textit{belief base} is a set of propositions that is not closed under logical consequence. Its elements represent beliefs that are held independently of any other belief or set of beliefs \citep{Hansson2022}. In this way, models utilizing belief bases provide enhanced expressiveness compared to the belief set presented in \citet{AGM1985}.
 
-\subsection{Partial meet contraction}
+Partial meet contraction was further generalized by \citeauthor{Hansson1993} to apply to belief bases. It is important to note that while partial meet contraction is based on selecting maximal subsets that do not imply the contracted belief, it is not sufficient for these subsets that they do not contain the contracted sentence. \citeauthor{Hansson1993} characterized the partial meet base contraction in the terms of the following postulates:
+
+\begin{enumerate}
+    \item [--] Unless the belief is a tautology, the contracted belief will not be part of the set of the consequences derived from the contracted belief base:
+    $$\text{if } \nvdash \varphi, \text{ then } \varphi \notin \textsf{Cn}(B - \varphi) \textbf{\textit{ (success)}}$$
+
+    \item [--] New beliefs will never be added to the belief base during the contraction:
+    $$B - \varphi \subseteq B \textbf{\textit{ (inclusion)}}$$
+
+    \item [--] Relevance blocks the exclusion of elements that there is no good reason to exclude.
+    
+    \begin{equation*}
+        \begin{split}
+            \text{if } \psi \in B \text{ and } \psi \notin  (B - \varphi), \text{ then there is some } B' \text{ such that }  \\
+                (B - \varphi) \subseteq B' \subseteq B, \varphi \notin \textsf{Cn}(B') \text{ but } \varphi \in \textsf{Cn}(B' \cup \{ \psi \})  \textbf{\textit{ (relevance)}}
+        \end{split}
+    \end{equation*}
+
+    \item [--] Uniformity ensures that the result of contracting a sentence from a belief base depends only on which subsets of the belief base imply the contracted sentece. In other words, if all the subsets of $B$ that imply some sentence $\varphi$ also imply $\psi$, and vice versa, then the result of the contractions are equivalents.
+    $$\text{if for all subsets } B' \text{ of } B, \varphi \in \textsf{Cn}(B') \text{ if and only if } \psi \in \textsf{Cn}(B'), \text{ then } B - \varphi = B - \psi \textbf{\textit{ (uniformity)}}$$
+
+\end{enumerate}
+
+\newtheorem{theorem}{Theorem}[chapter]
+
+\begin{theorem}
+    An operation of contraction of $B$ is a \textit{partial meet base contraction} if and only if it satisfies the four basic postulates above.    
+\end{theorem}
+
 \subsection{Kernel contraction}
+
+In \citep{Hansson1994}, \citeauthor{Hansson1994} introduces another construction for obtaining contraction operations, based on the notions of kernels and incision functions. Unlike partial meet contractions that aims for maximal subsets that did not imply the undesired belief, a kernel contraction targets the minimal set of beliefs that do imply the unwanted sentence.
+
+As explained in \citep{Wassermann2000}, the idea behind the kernel contraction is that if we remove at least one element of each minimal subset that implies the belief to be contracted, then we obtain a belief base that does not imply the undesired belief. To perform these removals, we use an incision function.
+
+\begin{definition}
+    Let $B$ be a belief base and let $\varphi$ be a proposition. The \textit{kernel set}, denoted by \textsf{ker}($B$, $\varphi$), as the family of all minimal subsets $X \subseteq B$ that entails $\varphi$. In other words, whenever $X \subseteq B$, $X$ is a \textit{kernel} of $B$ with respect to $\varphi$ if and only if both $\varphi \in \textsf{Cn}(X)$ and there is no $Y \subseteq X$ such that $\varphi \in \textsf{Cn}(Y)$.
+\end{definition}
+
+\begin{definition}
+    Let $B$ be a belief base and let $\sigma$ be any function such that for every proposition $\varphi$, it satisfies the following conditions:
+    \begin{itemize}
+        \item [--] $\sigma(\textsf{ker}(B, \varphi)) \subseteq \bigcup \textsf{ker}(B, \varphi)$ 
+        \item [--] if $X$ is a non-empty element of $\textsf{ker}(B, \varphi)$, then $X \cap \textsf{ker}(B, \varphi) \neq \emptyset$
+    \end{itemize}
+    
+    Such a function is known as an \textit{incision function}, which, in other words, is a function that selects at least one element from each kernel for removal.
+\end{definition}
+
+\begin{definition}
+    Let $\sigma$ be an incision function. The \textit{kernel contraction} on $B$ determined by $\sigma$ is the operation $-_{\sigma}$ such that for all sentences $\varphi$:
+
+    $$B -_{\sigma} \varphi = B \setminus \sigma(\textsf{ker}(B, \varphi))$$
+\end{definition}
 
 \section{Pseudo-contraction}
 \subsection{Cn* partial meet pseudo-contraction}
