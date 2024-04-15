@@ -27,71 +27,70 @@ where \textsf{Cn} is a consequence operator and $K \subseteq K + \varphi$, which
 
 A contraction occurs when the agent stops believing in certain information. In simple terms, a \textit{contraction} consists of giving up as many beliefs as it is needed so that the new belief set no longer implies the unwanted belief. Unlike expansion, contractions are characterized by a set of postulates that capture the underlying intuition behind the operation \citep{Wassermann2000}. Let's define a contraction $K - \varphi$, where $K$ is the initial belief set and $\varphi$ is the belief to be removed.
 
-\begin{enumerate}
-    \item[--] The result of contracting a belief set is always another belief set:    
-    $$K - \varphi \text{ is a belief set \textbf{\textit{(closure)}}}$$
+\begin{itemize}
+    \item[] \textbf{(Closure)} The result of contracting a belief set is always another belief set:
+    $$K - \varphi \textit{ is a belief set}$$
 
-    \item[--] New beliefs would never be added to the belief set during the contraction operation:    
-    $$K - \varphi \subseteq K \textbf{\textit{ (inclusion)}}$$
-
-    \item[--] If the belief to be removed is not present in the belief set, no changes occur to the set:
-    $$\text{if } \varphi \not \in K, \text{ then } K - \varphi = K \textbf{\textit{ (vacuity)}}$$
-
-    \item[--] On the other hand, unless a belief is a tautology (hence, an element of every belief set), the contracted belief will always be removed:
-    $$\text{if } \nvdash \varphi, \textrm{ then } \varphi \notin (K - \varphi) \textbf{\textit{ (success)}}$$
+    \item[] \textbf{(Inclusion)} New beliefs would never be added to the belief set during the contraction operation:
+    $$K - \varphi \subseteq K$$
     
-    \item[--] A contraction is recoverable by the means of an expansion operation:
-    $$K \subseteq (K - \varphi) + \varphi \textbf{\textit{ (recovery)}}$$
+    \item[] \textbf{(Vacuity)} If the belief to be removed is not present in the belief set, no changes occur to the set:
+    $$\textit{if } \varphi \not \in K, \textit{ then } K - \varphi = K$$
     
-    \item[--] Contractions made by equivalent beliefs yield equivalent results:
-    $$\text{if } \vdash \varphi \leftrightarrow \psi, \text{ then } (K - \varphi) = (K - \psi) \textbf{\textit{ (equivalence)}}$$
-\end{enumerate}
+    \item[] \textbf{(Success)} On the other hand, unless a belief is a tautology (hence, an element of every belief set), the contracted belief will always be removed:
+    $$\textit{if } \nvdash \varphi, \textit{ then } \varphi \notin (K - \varphi)$$
+    
+    \item[] \textbf{(Recovery)} A contraction is recoverable by the means of an expansion operation:
+    $$K \subseteq (K - \varphi) + \varphi$$
+    
+    \item[] \textbf{(Equivalence)} Contractions made by equivalent beliefs yield equivalent results:
+    $$\textit{if } \vdash \varphi \leftrightarrow \psi, \textit{ then } (K - \varphi) = (K - \psi)$$
+\end{itemize}
 
 Furthermore, besides the basic postulates, the AGM model defines two additional ones:
 
-\begin{enumerate}
-    \item [--] A belief $\chi$ that is part of ($K - \varphi$) and ($K - \psi$) will also be part of $K - (\varphi \wedge \psi)$:
-    $$(K - \varphi) \cap (K - \psi) \subseteq K-(\varphi \wedge \psi) \textbf{\textit{ (conjunctive overlap)}}$$
+\begin{itemize}
+    \item[] \textbf{(Conjunctive overlap)} A belief $\omega$ that is part of ($K - \varphi$) and ($K - \psi$) will also be part of $K - (\varphi \wedge \psi)$:
+    $$(K - \varphi) \cap (K - \psi) \subseteq K-(\varphi \wedge \psi)$$
 
-    \item [--] Any belief deleted when removing $\varphi$ will also be deleted when removing $\varphi \wedge \psi$:
-    $$\text{if } \varphi \notin K - (\varphi \wedge \psi), \text{ then } K - (\varphi \wedge \psi) \subseteq (K - \varphi) \textbf{\textit{ (conjunctive inclusion)}}$$
-\end{enumerate}
+    \item[] \textbf{(Conjunctive inclusion)} Any belief deleted when removing $\varphi$ will also be deleted when removing $\varphi \wedge \psi$:
+    $$\textit{if } \varphi \notin K - (\varphi \wedge \psi), \textit{ then } K - (\varphi \wedge \psi) \subseteq (K - \varphi)$$
+\end{itemize}
 
 \subsection{Revision}
 \label{subsec:revision}
 
 The process of revision involves adding new information to the belief set while ensuring that the final belief set will be consistent. If a belief set remains consistent after adding a new information, the belief will simply be added into the set. However, if the exapansion results in inconsistency, other parts of the initial belief set may need to be removed to achieve consistency. Similar to contraction, the revision operation $K * \varphi$ is characterized by a set of basic postulates.
 
-\begin{enumerate}
-    \item [--] Just like in contraction, the outcome of a revision in a belief set always results in another belief set:
-    $$K * \varphi \text{ is a belief set \textbf{\textit{(closure)}}}$$
+\begin{itemize}
+    \item[] \textbf{(Closure)} Just like in contraction, the outcome of a revision in a belief set always results in another belief set:
+    $$K * \varphi \textit{ is a belief set}$$
 
-    \item [--] The sucess of a revision is indicated by a resulting belief set that contains the revised belief:
-    $$\varphi \in (K * \varphi) \textbf{\textit{ (success)}}$$
-    
-    \item [--] No information besides the revised belief and its consequences will be added to the belief set during an operation of revision:
-    $$(K * \varphi) \subseteq (K + \varphi) \textbf{\textit{ (inclusion)}}$$
-    
-    \item [--] If the the new belief is consistent with belief set, all the beliefs are preserverd. At this case, together with inclusion, expansion and revision are equivalents:
-    $$\text{if } \neg \varphi \notin K, \text{ then } (K + \varphi) \subseteq (K * \varphi) \textbf{\textit{ (preservation)}}$$
-    
-    \item [--] The rational agent should aim for consistency at any cost. So, unless the new information in itself is inconsistent, the revised belief set is consistent:
-    $$\text{if } \varphi \text{ is consistent then } (K * \varphi) \text{ is also consistent} \textbf{\textit{ (consistency)}}$$
-    
-    \item [--] Revisions made by equivalent beliefs yield equivalent results:
-    $$\text{if } \vdash \varphi \leftrightarrow \psi, \text{ then } (K * \varphi) = (K * \psi) \textbf{\textit{ (equivalence)}}$$
-\end{enumerate}
+    \item[] \textbf{(Success)} The sucess of a revision is indicated by a resulting belief set that contains the revised belief:
+    $$\varphi \in (K * \varphi)$$
+
+    \item[] \textbf{(Inclusion)} No information besides the revised belief and its consequences will be added to the belief set during an operation of revision:
+    $$(K * \varphi) \subseteq (K + \varphi)$$
+
+    \item[] \textbf{(Preservation)} If the the new belief is consistent with belief set, all the beliefs are preserverd. At this case, together with inclusion, expansion and revision are equivalents:
+    $$\textit{if } \neg \varphi \notin K, \textit{ then } (K + \varphi) \subseteq (K * \varphi)$$
+
+    \item[] \textbf{(Consistency)} The rational agent should aim for consistency at any cost. So, unless the new information in itself is inconsistent, the revised belief set is consistent:
+    $$\textit{if } \varphi \textit{ is consistent, then } (K * \varphi) \textit{ is also consistent}$$
+
+    \item[] \textbf{(Equivalence)} Revisions made by equivalent beliefs yield equivalent results:
+    $$\textit{if } \vdash \varphi \leftrightarrow \psi, \textit{ then } (K * \varphi) = (K * \psi)$$
+\end{itemize}
 
 Finally, revision also have two extra postulates to deal with revisions by conjunctions. They say that for any two sentences $\varphi$ and $\psi$, if in revising the initial belief set $K$ by $\varphi$ one is lucky enough to reach a belief set $K * \varphi$ that is consistent with $\psi$, then to produce $K * (\varphi \wedge \psi)$ all that one needs to do is to expand $K * \varphi$ with $\psi$ \citep{Peppas2008}.
 
-\begin{enumerate}
-    \item [--] $K * \varphi$ is a minimal change of $K$ to include $\varphi$ and therefore there is no way to arrive at $K * (\varphi \wedge \psi)$ from $K$ with "less change":
-    $$K * (\varphi \wedge \psi) \subseteq (K * \varphi) + \psi \textbf{\textit{ (superexpansion)}}$$    
-    
-    \item [--] If however $\psi$ is consistent with $(K * \varphi)$, these further changes can be limited to simply adding $\psi$ to $(K * \varphi)$ and closing under logical implications:
-    $$\text{if } \neg \psi \notin (K * \varphi) \text{ then } (K * \varphi) + \psi \subseteq K * (\varphi \wedge \psi) \textbf{\textit{ (subexpansion)}}$$
+\begin{itemize}
+    \item[] \textbf{(Superexpansion)} $K * \varphi$ is a minimal change of $K$ to include $\varphi$ and therefore there is no way to arrive at $K * (\varphi \wedge \psi)$ from $K$ with "less change":
+    $$K * (\varphi \wedge \psi) \subseteq (K * \varphi) + \psi$$
 
-\end{enumerate}
+    \item[] \textbf{(Subexpansion)} If however $\psi$ is consistent with $(K * \varphi)$, these further changes can be limited to simply adding $\psi$ to $(K * \varphi)$ and closing under logical implications:
+    $$\textit{if } \neg \psi \notin (K * \varphi) \textit{ then } (K * \varphi) + \psi \subseteq K * (\varphi \wedge \psi)$$
+\end{itemize}
 
 \section{Partial meet contraction}
 
@@ -103,51 +102,49 @@ In \textit{partial meet contraction}, a selection function selects maximal subse
 \newtheorem{definition}{Definition}[chapter]
 
 \begin{definition}
-    Let $K$ be a belief set and $\alpha$ be a proposition. \citet{AM1981} defines a \textit{remainder set}, denoted by \textsf{rem}($K$, $\alpha$), as the family of all maximal subsets $B \subseteq K$ that do not imply $\alpha$. In other words, whenever $B \subseteq K$, $B$ is a \textit{remainder} of $K$ with respect to $\alpha$ if and only if both $\alpha \notin$ \textsf{Cn}($B$), and whenever $B' \subseteq K$ and $\textsf{Cn}(B') \cap \alpha = \emptyset$ then $B \not \subseteq B'$.
+    Let $K$ be a belief set and $\varphi$ be a proposition. \citet{AM1981} defines a \textit{remainder set}, denoted by \textsf{rem}($K$, $\varphi$), as the family of all maximal subsets $B \subseteq K$ that do not imply $\varphi$. In other words, whenever $B \subseteq K$, $B$ is a \textit{remainder} of $K$ with respect to $\varphi$ if and only if both $\varphi \notin$ \textsf{Cn}($B$), and whenever $B' \subseteq K$ and $\textsf{Cn}(B') \cap \varphi = \emptyset$ then $B \not \subseteq B'$.
 \end{definition}
 
 \begin{definition}
-    Let $K$ be a belief set and let $\gamma$ be any function such that for every proposition $\alpha$, $\gamma(\textsf{rem}(K, \alpha))$ is a non-empty subset of $\textsf{rem}(K, \alpha)$, if the remainder set is non-empty, and $\gamma(\textsf{rem}(K, \alpha)) = \{ K \}$ in the limiting case that the remainder set is empty \citep{AGM1985}. Such a function is a \textit{selection function} for $K$.
+    Let $K$ be a belief set and let $\gamma$ be any function such that for every proposition $\varphi$, $\gamma(\textsf{rem}(K, \varphi))$ is a non-empty subset of $\textsf{rem}(K, \varphi)$, if the remainder set is non-empty, and $\gamma(\textsf{rem}(K, \varphi)) = \{ K \}$ in the limiting case that the remainder set is empty \citep{AGM1985}. Such a function is a \textit{selection function} for $K$.
 \end{definition}
 
 \begin{definition}
-    Given the set of propositions $K$ and the selection function $\gamma$, the operation of \textit{partial meet contraction} of the proposition $\alpha$ is defined by putting
+    Given the set of propositions $K$ and the selection function $\gamma$, the operation of \textit{partial meet contraction} of the proposition $\varphi$ is defined by putting
 
-    $$K -_{\gamma} \alpha = \bigcap \gamma(\textsf{rem}(K, \alpha))$$
+    $$K -_{\gamma} \varphi = \bigcap \gamma(\textsf{rem}(K, \varphi))$$
 
-    for all $\alpha$ \citep{AGM1985}.
+    for all $\varphi$ \citep{AGM1985}.
 \end{definition}
 
 \begin{definition}
-    The limiting case when for all propositions $\alpha$, the selection function $\gamma$ always pick up only one element of their arguments is called \textit{maxichoice contraction operation} \citep{AGM1985}.
+    The limiting case when for all propositions $\varphi$, the selection function $\gamma$ always pick up only one element of their arguments is called \textit{maxichoice contraction operation} \citep{AGM1985}.
 \end{definition}
 
 \section{Belief bases}
 
-The AGM paradigm treated all beliefs in a belief set equally, making no distinction between basic beliefs and those inferred from the basic ones. In \citet{Hansson1993}, \citeauthor{Hansson1993} proposed a significant generalization by introducing belief bases. A \textit{belief base} is a set of propositions that is not closed under logical consequence. Its elements represent beliefs that are held independently of any other belief or set of beliefs \citep{Hansson2022}. In this way, models utilizing belief bases provide enhanced expressiveness compared to the belief set presented in \citet{AGM1985}.
+The AGM paradigm treated all beliefs in a belief set equally, making no distinction between basic beliefs and those inferred from the basic ones. In \citet{Hansson1993b}, \citeauthor{Hansson1993b} proposed a significant generalization by introducing belief bases. A \textit{belief base} is a set of propositions that is not closed under logical consequence. Its elements represent beliefs that are held independently of any other belief or set of beliefs \citep{Hansson2022}. In this way, models utilizing belief bases provide enhanced expressiveness compared to the belief set presented in \citet{AGM1985}.
 
-Partial meet contraction was further generalized by \citeauthor{Hansson1993} to apply to belief bases. It is important to note that while partial meet contraction is based on selecting maximal subsets that do not imply the contracted belief, it is not sufficient for these subsets that they do not contain the contracted sentence. \citeauthor{Hansson1993} characterized the partial meet base contraction in the terms of the following postulates:
+Partial meet contraction was further generalized by \citeauthor{Hansson1993b} to apply to belief bases. It is important to note that while partial meet contraction is based on selecting maximal subsets that do not imply the contracted belief, it is not sufficient for these subsets that they do not contain the contracted sentence. \citeauthor{Hansson1993b} characterized the partial meet base contraction in the terms of the following postulates:
 
-\begin{enumerate}
-    \item [--] Unless the belief is a tautology, the contracted belief will not be part of the set of the consequences derived from the contracted belief base:
-    $$\text{if } \nvdash \varphi, \text{ then } \varphi \notin \textsf{Cn}(B - \varphi) \textbf{\textit{ (success)}}$$
+\begin{itemize}
+    \item[] \textbf{(Success)} Unless the belief is a tautology, the contracted belief will not be part of the set of the consequences derived from the contracted belief base:
+    $$\textit{if } \nvdash \varphi, \textit{ then } \varphi \notin \textsf{Cn}(B - \varphi)$$
 
-    \item [--] New beliefs will never be added to the belief base during the contraction:
-    $$B - \varphi \subseteq B \textbf{\textit{ (inclusion)}}$$
+    \item[] \textbf{(Inclusion)} New beliefs will never be added to the belief base during the contraction:
+    $$B - \varphi \subseteq B$$
 
-    \item [--] Relevance blocks the exclusion of elements that there is no good reason to exclude.
-    
+    \item[] \textbf{(Relevance)} Blocks the exclusion of elements that there is no good reason to exclude:
     \begin{equation*}
         \begin{split}
-            \text{if } \psi \in B \text{ and } \psi \notin  (B - \varphi), \text{ then there is some } B' \text{ such that }  \\
-                (B - \varphi) \subseteq B' \subseteq B, \varphi \notin \textsf{Cn}(B') \text{ but } \varphi \in \textsf{Cn}(B' \cup \{ \psi \})  \textbf{\textit{ (relevance)}}
+            \textit{if } \psi \in B \textit{ and } \psi \notin  (B - \varphi), \textit{ then there is some } B' \textit{ such that }  \\
+                (B - \varphi) \subseteq B' \subseteq B, \varphi \notin \textsf{Cn}(B') \textit{ but } \varphi \in \textsf{Cn}(B' \cup \{ \psi \})
         \end{split}
     \end{equation*}
 
-    \item [--] Uniformity ensures that the result of contracting a sentence from a belief base depends only on which subsets of the belief base imply the contracted sentece. In other words, if all the subsets of $B$ that imply some sentence $\varphi$ also imply $\psi$, and vice versa, then the result of the contractions are equivalents.
-    $$\text{if for all subsets } B' \text{ of } B, \varphi \in \textsf{Cn}(B') \text{ if and only if } \psi \in \textsf{Cn}(B'), \text{ then } B - \varphi = B - \psi \textbf{\textit{ (uniformity)}}$$
-
-\end{enumerate}
+    \item[] \textbf{(Uniformity)} Ensures that the result of contracting a sentence from a belief base depends only on which subsets of the belief base imply the contracted sentece. In other words, if all the subsets of $B$ that imply some sentence $\varphi$ also imply $\psi$, and vice versa, then the result of the contractions are equivalents:
+    $$\textit{if for all subsets } B' \textit{ of } B, \varphi \in \textsf{Cn}(B') \textit{ if and only if } \psi \in \textsf{Cn}(B'), \textit{ then } B - \varphi = B - \psi$$
+\end{itemize}
 
 \newtheorem{theorem}{Theorem}[chapter]
 
@@ -169,7 +166,7 @@ As explained in \citep{Wassermann2000}, the idea behind the kernel contraction i
     Let $B$ be a belief base and let $\sigma$ be any function such that for every proposition $\varphi$, it satisfies the following conditions:
     \begin{itemize}
         \item [--] $\sigma(\textsf{ker}(B, \varphi)) \subseteq \bigcup \textsf{ker}(B, \varphi)$ 
-        \item [--] if $X$ is a non-empty element of $\textsf{ker}(B, \varphi)$, then $X \cap \textsf{ker}(B, \varphi) \neq \emptyset$
+        \item [--] \textit{if} $X$ \textit{is a non-empty element of} $\textsf{ker}(B, \varphi)$, \textit{then} $X \cap \textsf{ker}(B, \varphi) \neq \emptyset$
     \end{itemize}
     
     Such a function is known as an \textit{incision function}, which, in other words, is a function that selects at least one element from each kernel for removal.
@@ -182,5 +179,62 @@ As explained in \citep{Wassermann2000}, the idea behind the kernel contraction i
 \end{definition}
 
 \section{Pseudo-contraction}
-\subsection{Cn* partial meet pseudo-contraction}
-\subsection{Cn* kernel pseudo-contraction}
+
+A downside of the contraction notions introduced in the AGM framework \citep{AGM1985} is their syntax-dependency in the sense they can only use sentences explicitly present in the belief base. For example, consider a belief base $\mathcal{B} = \{ p \wedge q \}$ where we want to get rid of the unwanted consequence $q$. The empty belief base would result from this contraction. However, by transforming $\mathcal{B}$ into the equivalent belief base $\mathcal{C} = \{ p, q \}$ would keep the belief $p$. This issue arises from the inclusion postulate, which forbids the addition of beliefs during a contraction. 
+
+In \citet{Hansson1989}, a weakening of the inclusion postulate was introduced termed \textit{logical inclusion}.
+
+\begin{itemize}
+    \item[] \textbf{(Logical inclusion)} The consequences of a contraction are contained in the consequences of the belief base:
+    $$\textsf{Cn}(B - \varphi) \subseteq \textsf{Cn}(B)$$
+\end{itemize}
+
+Here, $B$ represents a belief base, $\varphi$ denotes the sentence to be contracted and \textsf{Cn} refers to a consequence relation. By replacing the inclusion postulate, \citeauthor{Hansson1989} allowed that beliefs in the contraction's consequences could now be added in the resulting belief base during the contraction.
+
+Some years later, \citeauthor{Hansson1993a} proposed to call an operation that satisfies success and logical inclusion a \textit{pseudo-contraction} \citep{Hansson1993a}.
+
+\begin{definition}
+    An operation is a \textit{pseudo-contraction} if it satisfies the postulates of success and logical inclusion.
+\end{definition}
+
+\subsection{Pseudo-contraction constructions}
+
+\citeauthor{Santos2016} proposed a pseudo-contraction operation that depended on the kind of formulas allowed to be added when contracting the belief base \citep{Santos2016,Santos2018}. Following the results of \citet{Hansson1993a}, \citeauthor{Santos2016} defined a construction of a pseudo-contraction operation called \textit{\textsf{Cn*} partial meet pseudo-contraction} \citep{Santos2016}.
+
+\begin{definition}
+    Let $B$ be a belief base, \textsf{Cn*} a consequence relation and $\gamma$ a selection function. The \textit{\textsf{Cn*} partial meet pseudo-contraction} is an operator such that for all $\varphi$:
+    $$B -_{\gamma}^{*} \varphi = \bigcap \gamma(\textsf{rem}(\textsf{Cn*}(B), \varphi))$$
+\end{definition}
+
+As detailed in \citet{Santos2018}, \textsf{Cn*} is a consequence relation that, in general, produces fewer consequences than the classical \textsf{Cn}. Let $B \subseteq \textsf{Cn*}(B) \subseteq \textsf{Cn}(B)$, if $\textsf{Cn*}(B) = B$, a \textsf{Cn*} pseudo-contraction becomes partial meet contraction for belief bases, and if $\textsf{Cn*}(B) = \textsf{Cn}(B)$, it becomes partial meet contraction for belief sets. This operator generalize those approaches allowing us to get results between them if \textsf{Cn*} varies in the range between $B$ and $\textsf{Cn}(B)$, which correspond to the thresholds for satisfaction of inclusion and logical inclusion, respectively.
+
+As in AGM paradigm, this contraction is characterized in the terms of its postulates. \citeauthor{Santos2016} defined it as an operation that satisfies success and the following "starred" versions of inclusion, relevance and uniformity:
+
+\begin{itemize}
+    \item[] \textbf{(Inclusion*)} Beliefs in the set of consequences of $B$ with respect to the consequence relation \textsf{Cn*} can be part of the resulting contraction of the belief base:
+    $$B - \varphi \subseteq \textsf{Cn*}(B)$$
+
+    \item[] \textbf{(Relevance*)} As in the classical version, this postulate blocks the exclusion of elements that there is no good reason to exclude, but now considering the consequence relation \textsf{Cn*}:
+    \begin{equation*}
+        \begin{split}
+            \textit{if } \psi \in \textsf{Cn*}(B) \textit{ and } \psi \notin  (B - \varphi), \textit{ then there is some } B' \textit{ such that }  \\
+                (B - \varphi) \subseteq B' \subseteq \textsf{Cn*}(B), \varphi \notin \textsf{Cn}(B') \textit{ but } \varphi \in \textsf{Cn}(B' \cup \{ \psi \})
+        \end{split}
+    \end{equation*}
+
+    \item[] \textbf{(Uniformity*)} Adapted from the classical uniformity postulate, if all subsets of $\textsf{Cn*}(B)$ that imply some sentence $\varphi$ also imply $\psi$, and vice versa, then the result of the contractions are equivalent:
+    $$\textit{if for all subsets } B' \textit{ of } \textsf{Cn*}(B), \varphi \in \textsf{Cn}(B') \textit{ if and only if } \psi \in \textsf{Cn}(B'), \textit{ then } B - \varphi = B - \psi$$
+\end{itemize}
+
+As proved in \citet{Santos2016}, from the postulates follows the theorem:
+
+\begin{theorem}
+    Provided that \textsf{Cn*} satisfies inclusion, idempotence and subclassicality, an operation is a \textit{\textsf{Cn*} partial meet pseudo-contraction} if and only if it satisfies success, inclusion*, relevance* and uniformity*. 
+\end{theorem}
+
+% one-place and two-place Cn*
+
+% Cn* kernel pseudo-contraction
+
+% \subsection{\textsf{Cn*} partial meet pseudo-contraction}
+% \subsection{\textsf{Cn*} kernel pseudo-contraction}
