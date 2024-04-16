@@ -178,6 +178,23 @@ As explained in \citep{Wassermann2000}, the idea behind the kernel contraction i
     $$B -_{\sigma} \varphi = B \setminus \sigma(\textsf{ker}(B, \varphi))$$
 \end{definition}
 
+In terms of postulates, instead of relevance, kernel contraction satisfies a slightly more general property called core-retainment:
+\begin{itemize}
+    \item[] \textbf{(Core-retainment)} Requires of an excluded sentence $\psi$ that it in some way contributes to the fact that $B$ implies $\varphi$:
+    \begin{equation*}
+        \begin{split}
+            \textit{if } \psi \in B \textit{ and } \psi \notin (B - \varphi), \textit{ then there is some } B' \textit{ such that } \\
+            B' \subseteq B \textit{ and } \varphi \notin \textsf{Cn}(B') \textit{ but } \varphi \in \textsf{Cn}(B' \cup \{ \psi \}) 
+        \end{split}
+    \end{equation*}
+\end{itemize}
+
+\citeauthor{Hansson1994} also characterized kernel contraction in the terms of a set of postulates.
+
+\begin{theorem}
+    An operation is a \textit{kernel contraction} for a belief base if and only if it satisfies inclusion, success, uniformity and core-retainment \citep{Hansson1994}.
+\end{theorem}
+
 \section{Pseudo-contraction}
 
 A downside of the contraction notions introduced in the AGM framework \citep{AGM1985} is their syntax-dependency in the sense they can only use sentences explicitly present in the belief base. For example, consider a belief base $\mathcal{B} = \{ p \wedge q \}$ where we want to get rid of the unwanted consequence $q$. The empty belief base would result from this contraction. However, by transforming $\mathcal{B}$ into the equivalent belief base $\mathcal{C} = \{ p, q \}$ would keep the belief $p$. This issue arises from the inclusion postulate, which forbids the addition of beliefs during a contraction. 
@@ -233,13 +250,39 @@ As proved in \citet{Santos2016}, from the postulates follows the theorem:
 \end{theorem}
 
 \subsection{\textsf{Cn*} kernel pseudo-contraction}
-Analogously to \textsf{Cn*} partial meet pseudo-contraction, the \textsf{Cn*} kernel pseudo-contraction is defined by using kernels and incision functions for $\textsf{Cn*}(B)$ rather than $B$.
+Analogously to \textsf{Cn*} partial meet pseudo-contraction, \citeauthor{Matos2021} introduced \textsf{Cn*} kernel pseudo-contraction by using kernels and incision functions for $\textsf{Cn*}(B)$ rather than $B$ \citep{Matos2021}.
 \begin{definition}
-    Let $B$ be a belief base, \textsf{Cn*}
+    Let $B$ be a belief base, \textsf{Cn*} a consequence relation and $\sigma$ an incision function. The \textit{\textsf{Cn*} kernel pseudo-contraction} of $B$ by a sentence $\varphi$, is such that, for all sentences $\varphi$:
+
+    $$B -_{\sigma}^{*} \varphi = \textsf{Cn*}(B) \setminus \sigma(\textsf{ker}(\textsf{Cn*}(B), \varphi))$$
 \end{definition}
 
-\subsection{Two-place pseudo-contraction}
-% one-place and two-place Cn*
+To formalize the \textsf{Cn*} kernel pseudo-contraction in terms of postulates, \citeauthor{Matos2021} first introduced the "starred" version of core-retainment:
 
-% \subsection{\textsf{Cn*} partial meet pseudo-contraction}
-% \subsection{\textsf{Cn*} kernel pseudo-contraction}
+\begin{itemize}
+    \item[] \textbf{(Core-retainment*)} Similar to the classical version but considering the consequence relation \textsf{Cn*}, this postulate requires of an excluded sentence $\psi$ that it in some way contributes to the fact that $B$ implies $\varphi$:
+    \begin{equation*}
+        \begin{split}
+            \textit{if } \psi \in \textsf{Cn*}(B) \textit{ and } \psi \notin (B - \varphi), \textit{ then there is some } B' \textit{ such that } \\
+            B' \subseteq \textsf{Cn*}(B) \textit{ and } \varphi \notin \textsf{Cn}(B') \textit{ but } \varphi \in \textsf{Cn}(B' \cup \{ \psi \}) 
+        \end{split}
+    \end{equation*}
+\end{itemize}
+
+As proved in \citet{Matos2021}, from the postulates the representation theorem follows:
+
+\begin{theorem}
+    If \textsf{Cn*} satisfies monotonicity, then an operation is a \textit{\textsf{Cn*} kernel pseudo-contraction} if and only if it satisfies success, inclusion*, core-retainment* and uniformity*.
+\end{theorem}
+
+\subsection{Two-place pseudo-contraction}
+
+\citeauthor{Matos2021} presented another kind of \textsf{Cn*} pseudo-contractions using consequence operators that also take into account the input formula. 
+
+Applying a two-place consequence operator to partial meet pseudo-contraction instead of using the classical one-place operator give us the following definition:
+
+\begin{definition}
+    Let $B$ be a belief set, \textsf{Cn*} a two place consequence operator and $\gamma$ a selection function. The \textit{Two-place \textsf{Cn*} partial meet pseudo-contraction} of $B$ by a sentence $\varphi$, is such that, for all sentences $\varphi$:
+
+    $$B -^{*}_{\gamma} \varphi = \bigcap \gamma(\textsf{rem}(\textsf{Cn*}(B, \varphi), \varphi))$$
+\end{definition}
