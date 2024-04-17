@@ -282,7 +282,33 @@ As proved in \citet{Matos2021}, from the postulates the representation theorem f
 Applying a two-place consequence operator to partial meet pseudo-contraction instead of using the classical one-place operator give us the following definition:
 
 \begin{definition}
-    Let $B$ be a belief set, \textsf{Cn*} a two place consequence operator and $\gamma$ a selection function. The \textit{Two-place \textsf{Cn*} partial meet pseudo-contraction} of $B$ by a sentence $\varphi$, is such that, for all sentences $\varphi$:
+    Let $B$ be a belief base, \textsf{Cn*} a two place consequence operator and $\gamma$ a selection function. The \textit{Two-place \textsf{Cn*} partial meet pseudo-contraction} of $B$ by a sentence $\varphi$, is such that, for all sentences $\varphi$:
 
     $$B -^{*}_{\gamma} \varphi = \bigcap \gamma(\textsf{rem}(\textsf{Cn*}(B, \varphi), \varphi))$$
 \end{definition}
+
+In case the value returned by \textsf{Cn*} does not depend on $\varphi$, then $\textsf{Cn*}(B) = \textsf{Cn*}(B, \varphi)$ and \textsf{Cn*} is called a one-place consequence operator:
+
+\newtheorem{proposition}{Proposition}[chapter]
+
+\begin{proposition}
+    Every \textsf{Cn*} partial meet pseudo-contraction is a two-place \textsf{Cn*} partial meet pseudo-contraction \citep{Santos2018}.
+\end{proposition}
+
+As presented in \citet{Santos2018}, the two-place \textsf{Cn*} partial meet pseudo-contraction satisfies success, inclusion* and relevance* but uniformity* is lost.
+
+Two-place \textsf{Cn*} kernel pseudo-contraction are defined in \citet{Matos2021} analogously by using kernels and incision functions for $\textsf{Cn*}(B, \varphi)$ rather then for $B$:
+
+\begin{definition}
+    Let $B$ be a belief base, \textsf{Cn*} a two place consequence operator and $\sigma$ an incision function. The \textit{two-place \textsf{Cn*} kernel pseudo-contraction} of $B$ by a sentence $\varphi$ is such that, for all sentences $\varphi$:
+
+    $$B -^{*}_{\sigma} \varphi = \textsf{Cn*}(B, \varphi) \setminus \sigma(\textsf{ker}(\textsf{Cn*}(B, \varphi), \varphi))$$
+\end{definition}
+
+As in \textsf{Cn*} partial meet pseudo-contraction, this operation generalizes \textsf{Cn*} kernel pseudo-contractions:
+
+\begin{proposition}
+    Every \textsf{Cn*} kernel pseudo-contraction is a two-place \textsf{Cn*} kernel pseudo-contraction \citep{Santos2018}.
+\end{proposition}
+
+Two-place \textsf{Cn*} kernel pseudo-contraction satisfies success, inclusion* and core-retainment* but not uniformity*.
