@@ -94,6 +94,13 @@
   doi     = {10.2307/2274239}
 }
 
+@inproceedings{Baader2018,
+  author = {Baader, Franz and Kriegel, Francesco and Nuradiansyah, Adrian and Peñaloza, Rafael},
+  title  = {Making Repairs in Description Logics More Gentle},
+  month  = {10},
+  year   = {2018},
+}
+
 @inproceedings{ Baader-CADE2021,
   author    = {Franz {Baader} and Patrick {Koopmann} and Francesco {Kriegel} and Adrian {Nuradiansyah}},
   title     = {{Computing Optimal Repairs of Quantified ABoxes w.r.t. Static $\mathcal{E\!L}$ TBoxes}},
@@ -130,6 +137,19 @@
   abstract  = {Ontologies based on Description Logics may contain errors, which are usually detected when reasoning produces consequences that follow from the ontology, but do not hold in the modelled application domain. In previous work, we have introduced repair approaches for {\$}{\$}{\backslash}mathcal{\{}E{\}}{\backslash}mathcal{\{}L{\}}{\$}{\$}ELontologies that are optimal in the sense that they preserve a maximal amount of consequences. In this paper, we will, on the one hand, review these approaches, but with an emphasis on motivation rather than on technical details. On the other hand, we will describe new results that address the problems that optimal repairs may become very large or need not even exist unless strong restrictions on the terminological part of the ontology apply. We will show how one can deal with these problems by introducing concise representations of optimal repairs.},
   year      = {2023},
   isbn      = {978-3-031-43619-2}
+}
+
+@inproceedings{ Baader-SAC23,
+  author     = {Baader, Franz},
+  title      = {Optimal Repairs in Ontology Engineering as Pseudo-Contractions in Belief Change},
+  booktitle  = {Proceedings of the 38th ACM/SIGAPP Symposium on Applied Computing},
+  publisher  = {ACM},
+  series     = {SAC '23},
+  collection = {SAC '23},
+  month      = mar,
+  year       = {2023},
+  doi        = {10.1145/3555776.3577719},
+  url        = {http://dx.doi.org/10.1145/3555776.3577719},
 }
 
 @article{ Hansson1989,
@@ -194,6 +214,21 @@
 	edition      =	{{S}pring 2022},
 	year         =	{2022},
 	howpublished =	{\url{https://plato.stanford.edu/archives/spr2022/entries/logic-belief-revision/}}
+}
+
+@inbook{ Matos2019,
+  author    = {Matos, Vin{\'i}cius Bitencourt and Guimar{\~a}es, Ricardo and Santos, Yuri David and Wassermann, Renata},
+  title     = {Pseudo-contractions as Gentle Repairs},
+  booktitle = {Description Logic, Theory Combination, and All That: Essays Dedicated to Franz Baader on the Occasion of His 60th Birthday},
+  publisher = {Springer International Publishing},
+  editor    = {Lutz, Carsten and Sattler, Uli and Tinelli, Cesare and Turhan, Anni-Yasmin and Wolter, Frank},
+  address   = {Cham},
+  pages     = {385--403},
+  abstract  = {Updating a knowledge base to remove an unwanted consequence is a challenging task. Some of the original sentences must be either deleted or weakened in such a way that the sentence to be removed is no longer entailed by the resulting set. On the other hand, it is desirable that the existing knowledge be preserved as much as possible, minimising the loss of information. Several approaches to this problem can be found in the literature. In particular, when the knowledge is represented by an ontology, two different families of frameworks have been developed in the literature in the past decades with numerous ideas in common but with little interaction between the communities: applications of AGM-like Belief Change and justification-based Ontology Repair. In this paper, we investigate the relationship between pseudo-contraction operations and gentle repairs. Both aim to avoid the complete deletion of sentences when replacing them with weaker versions is enough to prevent the entailment of the unwanted formula. We show the correspondence between concepts on both sides and investigate under which conditions they are equivalent. Furthermore, we propose a unified notation for the two approaches, which might contribute to the integration of the two areas.},
+  year      = {2019},
+  isbn      = {978-3-030-22102-7},
+  doi       = {10.1007/978-3-030-22102-7_18},
+  url       = {https://doi.org/10.1007/978-3-030-22102-7_18}
 }
 
 @masterthesis{ Matos2021,

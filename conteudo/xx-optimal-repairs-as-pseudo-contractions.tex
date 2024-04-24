@@ -1,0 +1,87 @@
+%!TeX root=../tese.tex
+%("dica" para o editor de texto: este arquivo é parte de um documento maior)
+% para saber mais: https://tex.stackexchange.com/q/78101
+
+\chapter{Optimal repairs as pseudo-contractions}
+
+\section{Classical repairs and contractions}
+
+The classical notions of contraction and repair resort to subsets of the given knowledge base to remove an unwanted consequence \citep{Baader-SAC23}. 
+
+In section \ref{sec:belief-bases}, we presented two approaches for contraction operations in belief bases, the partial meet base contraction and the kernel contraction. The former based on the notions of remainders and selection functions that seeks for maximal subsets of the belief base that did not imply the unwanted consequence, and the latter with the intuition of removing at least one element of minimal subsets that implies the undesired belief.
+
+In the chapter \ref{chap:ontology-engineering}, a classical repair is defined as a subset of a knowledge base $B$ where the unwanted sentence $\varphi$ is not implied by the consequences of the base. Considering an operation that takes $B$ and $\varphi$ and returns a classical repair of $B$ with respect to $\varphi$ if $\varphi$ is not a tautology and $B$ otherwise, then this operation is a contraction operation \citep{Baader-SAC23, Matos2019}. An optimal classical repair of a knowledge base is a maximal subset of the base that did not imply the unwanted sentence. It's easy to see that optimal classical repairs and remainder coincide, which arises the following proposition:
+
+\begin{proposition}
+    A \textit{maxichoice partial meet contraction operation} of $B$ with respect to $\varphi$ is an \textit{optimal classical repair} for all sentences $\varphi$ satisfying that $\varphi$ is not a tautology, and $B -_{\gamma} \varphi = B$ otherwise \citep{Baader-SAC23}.
+\end{proposition}
+
+A kernel contraction, in turn, can also be obtained using the notions of justifications and hitting set:
+\begin{definition}
+    A \textit{justification} of $\varphi$ in a belief base $B$ is a minimal subset $X$ of $B$ such that $\varphi \notin \textsf{Cn}(X)$. The set of all justifications of $\varphi$ in $B$ is denoted as $\textsf{jus}(B, \varphi)$. It follows that:
+
+    \begin{itemize}
+        \item[--] $\textsf{jus}(B, \varphi) = \emptyset$  \textit{if} $\varphi \notin \textsf{Cn}(B)$
+        \item[--] $\textsf{jus}(B, \varphi) = \{ \emptyset \}$  \textit{if} $\varphi$  \textit{is a tautology}
+    \end{itemize}
+\end{definition}
+
+\begin{definition}
+    Given a collection $\{ X_1, ..., X_k \}$ of subsets $X_i$ of $B$, a \textit{hitting set} $H$ of this collection is a subset of $X_1 \cup ... \cup X_k$ such that $H \cap X_i \neq \emptyset$ for all $i = 1, ..., k$. This hitting set is \textit{minimal} if no other hitting set is strictly contained in it \citep{Baader-SAC23}.
+\end{definition}
+
+Optimal classical repairs of $B$ with respect to $\varphi$ then, can be obtained by removing a minimal hitting set from the justifications of $\varphi$ in $B$. In other words, $B \setminus H$ is an optimal classical repair, where $H$ ranges over the minimal hitting sets of $\textsf{jus}(B, \varphi)$.
+
+Building upon these concepts, \citeauthor{Matos2021} showed that the set of all justifications of $\varphi$ in $B$ coincides with the set of all kernels \citep{Matos2021}. In addition, the outcome produced by an incision function is a hitting set if the specified sentence $\varphi$ is not a tautology. This incision function is \textit{minimal} if is a minimal hitting set. This leads to the following proposition:
+
+\begin{proposition}
+    Let $B$ be a knowledge base, $\varphi$ a sentence, and $\sigma$ a minimal incision function for $B$. Then $B -_{\sigma} \varphi$ is an optimal classical repair of $B$ with respect to $\varphi$ for all sentences $\varphi$ satisfying $\nvdash \varphi$, and $B -_{\sigma} \varphi = B$  if $\vdash \varphi$ \citep{Baader-SAC23}.
+\end{proposition}
+
+Note that every maxichoice partial meet contraction can be obtained as a kernel contraction induced by a minimal incision function and vice versa.
+
+\section{Optimal repairs and pseudo-contractions}
+
+To avoid the issue of potentially removing more information than necessary due to syntax-dependency, pseudo-contraction operations were introduced. These operations replace the inclusion postulate with the logical inclusion postulate, as detailed in section \ref{sec:pseudo-contraction}.
+
+\citeauthor{Matos2019} demonstrated the existing relationship between the pseudo-contraction operations and the gentle repair approach of ontology repairs, which replaces the unwanted axiom by sets of logically weaker axioms \citep{Matos2019}. \citeauthor{Baader-SAC23}, on the other hand, concetrates your work \citep{Baader-SAC23} on optimal repairs instead.
+
+From \citet{Baader2018}, optimal repairs is defined as follows:
+
+\begin{definition}
+    Given a knowledge base $A$ and a sentence $\varphi$, the repair $B$ of $A$ with respect to $\varphi$ is an \textit{optimal repair} if there is no repair $C$ of $A$ with respect to $\varphi$ such that $C \models B$ and $B \not \models C$.
+\end{definition}
+
+Note that different from belief bases, knowledge bases in ontology engineering are usually assumed to be finite.
+
+Still in \citet{Baader2018}, the authors show that optimal repairs need not exists even if there are repairs. Moreover, even if optimal repairs exist, they need not cover all repairs. Optimal classical repairs cover all classical repairs in the sense that every classical repair is contained in an optimal classical repair. For general repairs \citep{Baader-SAC23}, the notion of containment needs to be replaced by entailment. The set of all optimal repairs \textit{covers} all repairs if for every repairs $B$ there is an optimal repair $C$ such that $C \models B$.
+
+In \citet{Baader-SAC23}, \citeauthor{Baader-SAC23} investigates the connection between optimal repairs and partial meet pseudo-contraction. He first defines as a consequence operator \textsf{Cn*}, a two-place function that has as an outcome the optimal repairs of the given knowledge base:
+
+$$\textsf{Cn*}(A, \varphi) := A \cup \bigcup O_{rep}(A, \varphi)$$
+
+This function is finite if and only if $O_{rep}(A, \varphi)$ is finite for all knowledge bases $A$ and sentences $\varphi$. In \citet{Baader-ESWC2022}, the authors show that optimal repairs can, in fact, be computed by computing optimal quantified ABox repairs, which is a finite and computable set.
+
+From this, in \citet{Baader-SAC23}, the author proves the follwing lemma:
+
+\newtheorem{lemma}{Lemma}[chapter]
+
+\begin{lemma}
+    Let $A$ be a knowledge base and $\varphi$ a sentence. If $B \in O_{rep}(A, \varphi)$, then $B$ is equivalent to a remainder of $\textsf{Cn*}(A, \varphi)$ with respect to $\varphi$.
+\end{lemma}
+
+An as a consequence of this lemma, \citeauthor{Baader-SAC23} proves the following theorem:
+
+\begin{theorem}
+    Let $A$ be a knowledge base and $\varphi$ a sentence. Then, there exists a \textsf{Cn*} partial meet pseudo-contraction operation, such that:
+    \begin{itemize}
+        \item[--] ($A -_{\gamma} \varphi$) is an \textit{optimal repair} if $O_{rep}(A, \varphi) \neq \emptyset$
+        \item[--] ($A -_{\gamma} \varphi$) is an \textit{optimal classical repair} if $O_{rep}(A, \varphi) = \emptyset$ and $\nvdash \varphi$
+    \end{itemize}
+\end{theorem}
+
+Remainders of $\textsf{Cn*}(A, \varphi)$ not necessarily are optimal repairs, even if $O_{rep}(A, \varphi) \neq \emptyset$. In his work, \citeauthor{Baader-SAC23} shows that this problem cannot occurs if $O_{rep}(A, \varphi)$ covers all repairs (Lemma 4.9 of \citet{Baader-SAC23}), and that maxichoice \textsf{Cn*} partial meet pseudo-contractions always produce optimal repairs in case $O_{rep}(A, \varphi)$ covers all repairs (Theorem 4.10 of \citet{Baader-SAC23}).
+
+This coverage condition is satisfied if the ABox is restricted to being acyclic and the TBox to being cycle-restricted \citep{Baader-ESWC2022,Baader-SAC23}.
+
+Finally, \citeauthor{Baader-SAC23} shows that, since every kernel contraction induced by a minimal incision function can be obtained as a maxichoice partial meet contraction, the results also holds if we replace "maxichoice \textsf{Cn*} partial meet pseudo-contraction" with "\textsf{Cn*} kernel pseudo-contraction induced by a minimal incision function" (Corollary 4.11 of \citet{Baader-SAC23}).

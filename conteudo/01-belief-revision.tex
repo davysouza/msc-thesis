@@ -93,6 +93,7 @@ Finally, revision also have two extra postulates to deal with revisions by conju
 \end{itemize}
 
 \section{Partial meet contraction}
+\label{sec:partial-meet-contraction}
 
 The postulates do not determine a unique contraction or revision operation for a belief set, but rather characterize such operations. \citet{AGM1985} introduces a construction for contraction functions based on the idea of selecting maximal subsets that do not entail the belief being contracted. This operation is known as partial meet contraction.
 
@@ -122,6 +123,7 @@ In \textit{partial meet contraction}, a selection function selects maximal subse
 \end{definition}
 
 \section{Belief bases}
+\label{sec:belief-bases}
 
 The AGM paradigm treated all beliefs in a belief set equally, making no distinction between basic beliefs and those inferred from the basic ones. In \citet{Hansson1993b}, \citeauthor{Hansson1993b} proposed a significant generalization by introducing belief bases. A \textit{belief base} is a set of propositions that is not closed under logical consequence. Its elements represent beliefs that are held independently of any other belief or set of beliefs \citep{Hansson2022}. In this way, models utilizing belief bases provide enhanced expressiveness compared to the belief set presented in \citet{AGM1985}.
 
@@ -153,6 +155,7 @@ Partial meet contraction was further generalized by \citeauthor{Hansson1993b} to
 \end{theorem}
 
 \subsection{Kernel contraction}
+\label{subsec:kernel-contraction}
 
 In \citep{Hansson1994}, \citeauthor{Hansson1994} introduces another construction for obtaining contraction operations, based on the notions of kernels and incision functions. Unlike partial meet contractions that aims for maximal subsets that did not imply the undesired belief, a kernel contraction targets the minimal set of beliefs that do imply the unwanted sentence.
 
@@ -196,6 +199,7 @@ In terms of postulates, instead of relevance, kernel contraction satisfies a sli
 \end{theorem}
 
 \section{Pseudo-contraction}
+\label{sec:pseudo-contraction}
 
 A downside of the contraction notions introduced in the AGM framework \citep{AGM1985} is their syntax-dependency in the sense they can only use sentences explicitly present in the belief base. For example, consider a belief base $\mathcal{B} = \{ p \wedge q \}$ where we want to get rid of the unwanted consequence $q$. The empty belief base would result from this contraction. However, by transforming $\mathcal{B}$ into the equivalent belief base $\mathcal{C} = \{ p, q \}$ would keep the belief $p$. This issue arises from the inclusion postulate, which forbids the addition of beliefs during a contraction. 
 
@@ -215,6 +219,7 @@ Some years later, \citeauthor{Hansson1993a} proposed to call an operation that s
 \end{definition}
 
 \subsection{\textsf{Cn*} partial meet pseudo-contraction}
+\label{subsec:partial-meet-pseudo-contraction}
 
 \citeauthor{Santos2016} proposed a pseudo-contraction operation that depended on the kind of formulas allowed to be added when contracting the belief base \citep{Santos2016,Santos2018}. Following the results of \citet{Hansson1993a}, \citeauthor{Santos2016} defined a construction of a pseudo-contraction operation called \textit{\textsf{Cn*} partial meet pseudo-contraction} \citep{Santos2016}.
 
@@ -250,6 +255,8 @@ As proved in \citet{Santos2016}, from the postulates follows the theorem:
 \end{theorem}
 
 \subsection{\textsf{Cn*} kernel pseudo-contraction}
+\label{subsec:kernel-pseudo-contraction}
+
 Analogously to \textsf{Cn*} partial meet pseudo-contraction, \citeauthor{Matos2021} introduced \textsf{Cn*} kernel pseudo-contraction by using kernels and incision functions for $\textsf{Cn*}(B)$ rather than $B$ \citep{Matos2021}.
 \begin{definition}
     Let $B$ be a belief base, \textsf{Cn*} a consequence relation and $\sigma$ an incision function. The \textit{\textsf{Cn*} kernel pseudo-contraction} of $B$ by a sentence $\varphi$, is such that, for all sentences $\varphi$:
@@ -276,6 +283,7 @@ As proved in \citet{Matos2021}, from the postulates the representation theorem f
 \end{theorem}
 
 \subsection{Two-place pseudo-contraction}
+\label{subsec:two-place-pseudo-contraction}
 
 \citeauthor{Matos2021} presented another kind of \textsf{Cn*} pseudo-contractions using consequence operators that also take into account the input formula. 
 
