@@ -1,0 +1,78 @@
+%!TeX root=../tese.tex
+%("dica" para o editor de texto: este arquivo é parte de um documento maior)
+% para saber mais: https://tex.stackexchange.com/q/78101
+
+\chapter{Description Logics}
+\label{chap:description-logics}
+
+Description logics (DLs) are a family of knowledge representation languages that can be used to represent knowledge of an application domain in a structured and well-understood way \citep{Baader2017}. Most of them can be seen as decidable fragments of first-order logic, i.e., computationally tractable. While first-order logic could be directly used to represent such knowledge, the fact that this logic is undecidable prevents the existence of an algorithm that decides whether a given sentence is entailed by the knowledge base. A fragment that is more or less expressive influences how much knowledge can be expressed and the ability of perform reasoning tasks such as checking the satisfability of concepts and the consistency of a KB, subsumption and answering different kinds of queries over the KB.
+
+DLs tipically separate domain knowledge into two components; a terminological part known as \textit{TBox} representing knowledge about the domain and an assertional part called \textit{ABox} representing knowledge about a concrete situation. Together, they create a \textit{knowledge base} (KB). For instance, a TBox would have sentences like:
+
+\begin{equation*}
+    \begin{split}
+        & \textsf{Student } \sqsubseteq \textsf{ Person} \\
+        & \textsf{Teacher } \sqsubseteq \textsf{ Person} \sqcap \exists \textsf{\textit{teaches}.Course}
+    \end{split}
+\end{equation*}
+
+while an ABox would be:
+
+\begin{equation*}
+    \begin{split}
+        & \textsf{Course(CS)} \\
+        & \textsf{Teacher(Mark)} \\
+        & \textsf{\textit{teaches}(Mark, CS)}
+    \end{split}
+\end{equation*}
+
+In Description Logic, the \textit{signature} $\Sigma$ denotes the space available for defining concepts and assertions. It comprises the disjoint union of sets of \textit{object names} $\Sigma_{O}$, \textit{concept names} $\Sigma_{C}$ and \textit{role names} $\Sigma_{R}$. \textit{Concepts} are unary predicates of first-order logic built from \textit{concept names} and \textit{role names} using language-specific constructors, while \textit{roles} are binary predicates that express the relation between objects. Desciption logics also defines a \textit{concept language} that allows the creation of \textit{concept descriptions} and \textit{role descriptions}. This field of study aims to describe abstractions of some domain of interest, through the use of concepts, roles and the language itself.
+
+\section{DL families and extensions}
+
+There exist a variety of description logics and its extensions. They follow a naming convention that describes the operators allowed and the expressivity of the language. Each language starts from a basic logic and is incremented with some extensions creating different levels of expressivity.
+
+For the basic logics, we have:
+
+\begin{itemize}
+    \item[] $\mathcal{AL}$:
+    \item[] $\mathcal{FL}$:
+    \item[] $\mathcal{EL}$:
+\end{itemize}
+
+Followed by the extensions:
+
+\begin{table}[!h]
+    \centering
+    \hspace*{\fill}
+    \begin{tabular}{p{0.13\textwidth}p{0.32\textwidth}p{0.55\textwidth}}
+        \toprule
+        \begin{center}\textbf{Name}\end{center} & \begin{center}\textbf{Notation}\end{center} & \begin{center}\textbf{Description}\end{center} \\
+        \midrule
+        \begin{center}$\mathcal{F}$\end{center} &  &  \\
+        \hline 
+        \begin{center}$\mathcal{E}$\end{center} &  &  \\
+        \hline 
+        \begin{center}$\mathcal{U}$\end{center} &  &  \\
+        \hline
+        \begin{center}$\mathcal{C}$\end{center} &  &  \\
+        \hline 
+        \begin{center}$\mathcal{H}$\end{center} &  &  \\
+        \hline 
+        \begin{center}$\mathcal{R}$\end{center} &  &  \\
+        \hline 
+        \begin{center}$\mathcal{O}$\end{center} &  &  \\
+        \hline 
+        \begin{center}$\mathcal{I}$\end{center} &  &  \\
+        \hline 
+        \begin{center}$\mathcal{N}$\end{center} &  &  \\
+        \hline 
+        \begin{center}$\mathcal{Q}$\end{center} &  &  \\
+    \end{tabular}
+\end{table}
+
+\section{The Description Logic $\mathcal{EL}$}
+
+We will now present the description logic called $\mathcal{EL}$. 
+
+
