@@ -28,47 +28,50 @@ while an ABox would be:
 
 In Description Logic, the \textit{signature} $\Sigma$ denotes the space available for defining concepts and assertions. It comprises the disjoint union of sets of \textit{object names} $\Sigma_{O}$, \textit{concept names} $\Sigma_{C}$ and \textit{role names} $\Sigma_{R}$. \textit{Concepts} are unary predicates of first-order logic built from \textit{concept names} and \textit{role names} using language-specific constructors, while \textit{roles} are binary predicates that express the relation between objects. Desciption logics also defines a \textit{concept language} that allows the creation of \textit{concept descriptions} and \textit{role descriptions}. This field of study aims to describe abstractions of some domain of interest, through the use of concepts, roles and the language itself.
 
-\section{DL families and extensions}
+\section{Description logic families and extensions}
 
-There exist a variety of description logics and its extensions. They follow a naming convention that describes the operators allowed and the expressivity of the language. Each language starts from a basic logic and is incremented with some extensions creating different levels of expressivity.
+There exist a variety of description logics and its extensions. They follow a naming convention that describes the operators allowed and its expressivity. Each language starts from a basic logic and is incremented with some extensions creating different levels of expressivity. Exstensions are new constructors for complex concepts created by adding new types of formulas.
 
 For the basic logics, we have:
 
 \begin{itemize}
-    \item[] $\mathcal{AL}$:
-    \item[] $\mathcal{FL}$:
-    \item[] $\mathcal{EL}$:
+    \item[] ($\mathcal{AL}$) Atributive language. Besides the atomic, universal ($\top$) and empty ($\perp$) concepts, this base language also allows atomic concept negation ($\neg$), intersection ($\sqcap$), value restriction ($\forall r.C$) and limited existential quantification ($\exists r.\top$).
+    \item[] ($\mathcal{FL}$) Frame based description language. It allows intersection ($\sqcap$), universal concept ($\top$), limited existential quantification ($\exists r.\top$) and role restriction ($r$).
+    \item[] ($\mathcal{EL}$) Existential language. This base language allows intersection ($\sqcap$) and existential restriction ($\exists r.C$)
 \end{itemize}
 
 Followed by the extensions:
 
-\begin{table}[!h]
+\begin{table}[h!]
     \centering
-    \hspace*{\fill}
-    \begin{tabular}{p{0.13\textwidth}p{0.32\textwidth}p{0.55\textwidth}}
-        \toprule
-        \begin{center}\textbf{Name}\end{center} & \begin{center}\textbf{Notation}\end{center} & \begin{center}\textbf{Description}\end{center} \\
-        \midrule
-        \begin{center}$\mathcal{F}$\end{center} &  &  \\
-        \hline 
-        \begin{center}$\mathcal{E}$\end{center} &  &  \\
-        \hline 
-        \begin{center}$\mathcal{U}$\end{center} &  &  \\
-        \hline
-        \begin{center}$\mathcal{C}$\end{center} &  &  \\
-        \hline 
-        \begin{center}$\mathcal{H}$\end{center} &  &  \\
-        \hline 
-        \begin{center}$\mathcal{R}$\end{center} &  &  \\
-        \hline 
-        \begin{center}$\mathcal{O}$\end{center} &  &  \\
-        \hline 
-        \begin{center}$\mathcal{I}$\end{center} &  &  \\
-        \hline 
-        \begin{center}$\mathcal{N}$\end{center} &  &  \\
-        \hline 
-        \begin{center}$\mathcal{Q}$\end{center} &  &  \\
-    \end{tabular}
+    \resizebox{\columnwidth}{!}{
+        \begin{tabular}{clccc}
+            
+            \toprule
+            \textbf{Symbol} & \textbf{Name} & \textbf{Syntax} & \textbf{Semantics} \\
+            \hline
+
+            \rowcolor{Gainsboro!60}\multicolumn{4}{l}{\textit{Concept constructors}} \\ \hline
+            $\mathcal{A}$ & value restriction (already in $\mathcal{AL}$)   & $\forall r.C$ & $\{ x \in \Delta^{\mathcal{I}} : \text{ for every } y \in \Delta^{\mathcal{I}}, \text{ if } \left< x,y \right> \in r^{\mathcal{I}}, \text{ then } y \in C^{\mathcal{I}}\}$ \\ \hline 
+            $\mathcal{E}$ & existential restriction                         & $\exists r.C$ & $\{ a \in \Delta^{\mathcal{I}} : \text{ there is some } b \in C^{\mathcal{I}} \text{ s.t. } \left< a,b \right> \in r^{\mathcal{I}} \}$ \\ \hline 
+            $\mathcal{U}$ & concept union                                   & $C \sqcup D$  & $C^{\mathcal{I}} \cup D^{\mathcal{I}}$ \\ \hline
+            $\mathcal{C}$ & complex concept negation                        & $\neg C$      & $\Delta^{\mathcal{I}} \setminus C^{\mathcal{I}}$ \\ \hline 
+            $\mathcal{O}$ & nominal                                         & $\{ a \}$     & $\{ a^{\mathcal{I}} \}$ \\ \hline 
+            \multirow{2}{*}{$\mathcal{N}$} & \multirow{2}{*}{number restriction}    & $\leq n r$    & $\{ a \in \Delta^{\mathcal{I}} : | \{ b \in \Delta^{\mathcal{I}} : \left< a,b \right>  \in r^{\mathcal{I}} \} | \leq n \}$ \\ \cline{3-4}
+                                           &                                        & $\geq n r$    & $\{ a \in \Delta^{\mathcal{I}} : | \{ b \in \Delta^{\mathcal{I}} : \left< a,b \right>  \in r^{\mathcal{I}} \} | \geq n \}$ \\ \hline 
+            \multirow{2}{*}{$\mathcal{Q}$} & \multirow{2}{*}{qualified cardinality restriction}   & $\leq n r.C$  & $\{ a \in \Delta^{\mathcal{I}} : | \{ b \in C^{\mathcal{I}} : \left< a,b \right>  \in r^{\mathcal{I}} \} | \leq n \}$ \\ \cline{3-4}
+                                           &                                                      & $\geq n r.C$  & $\{ a \in \Delta^{\mathcal{I}} : | \{ b \in C^{\mathcal{I}} : \left< a,b \right>  \in r^{\mathcal{I}} \} | \geq n \}$ \\ \hline 
+            
+            \rowcolor{Gainsboro!60}\multicolumn{4}{l}{\textit{Role constructors}} \\ \hline
+            $\mathcal{I}$ & inverse role                                                            & $r^{-}$       & $\{ \left< a,b \right> \in \Delta^{\mathcal{I}} \times \Delta^{\mathcal{I}} : \left< b,a \right> \in r^{\mathcal{I}} \}$ \\ \hline 
+            \rowcolor{Gainsboro!60}\multicolumn{4}{l}{\textit{Additional axioms}}                                      \\ \hline
+            $\mathcal{F}$ & role functionality                                      & $\top \sqsubseteq \leq 1.r$   &  \\ \hline 
+            $\mathcal{H}$ & role hierarchy                                          & $r \sqsubseteq_{r} s$         &  \\ \hline 
+            $\mathcal{S}$ & $\mathcal{ALC} + $ role transitivity                    & \textsf{Trans}($r$)           & if $ \left< a,b_{1} \right> \in r_{1}^{\mathcal{I}}, ..., \left< b_{i},b_{i+1} \right> \in r_{i+1}^{\mathcal{I}}, ...$ then $\left< a,b_{n} \right> \in s^{\mathcal{I}}$ \\ \hline 
+            $\mathcal{R}$ & role chain                            & $r_{1} \circ ... \circ r_{n} \sqsubseteq_{r} s$ &  \\ \hline 
+            \bottomrule
+        \end{tabular}
+    }
 \end{table}
 
 \section{The Description Logic $\mathcal{EL}$}
